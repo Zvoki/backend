@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= Populera produktär %></h1>
+    
+    <h1>Lista Proizvoda</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Produktens namn</th>
+                <th>Pris</th>
+                <th>Märke</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product => { %>
+                <tr>
+                    <td><%= product.id %></td>
+                    <td><%= product.name %></td>
+                    <td><%= product.price %></td>
+                    <td><%= product.brand %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+  </body>
+</html>

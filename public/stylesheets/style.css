@@ -1,0 +1,45 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+/* Osnovni stilovi za celu tabelu */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Stilizacija zaglavlja tabele */
+th {
+  background-color: #f3f3f3;
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+/* Stilizacija ćelija tabele */
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+  color: #555;
+}
+
+/* Različita pozadina naizmeničnih redova */
+tbody tr:nth-of-type(odd) {
+  background: #fafafa;
+}
+
+/* Hover efekat za redove */
+tbody tr:hover {
+  background: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+

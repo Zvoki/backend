@@ -5,9 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= Populera produktär %></h1>
-    
-    <h1>Lista Proizvoda</h1>
+    <h1><%= title %></h1>
     <table>
         <thead>
             <tr>
@@ -20,10 +18,10 @@
         <tbody>
             <% products.forEach(product => { %>
                 <tr>
-                    <td><%= product.id %></td>
-                    <td><%= product.name %></td>
-                    <td><%= product.price %></td>
-                    <td><%= product.brand %></td>
+                    <td><%= id %></td>
+                    <td><%= name %></td>
+                    <td><%= price %></td>
+                    <td><%= brand %></td>
                 </tr>
             <% }); %>
         </tbody>

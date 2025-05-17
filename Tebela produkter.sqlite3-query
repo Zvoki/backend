@@ -1,0 +1,8 @@
+-- database: ./data/Populera-produkter.db
+CREATE TABLE produkter (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    price TEXT NOT NULL,
+    brand TEXT NOT NULL  
+);
+SELECT * FROM "table-name";

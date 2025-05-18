@@ -6,25 +6,28 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Produktens namn</th>
-                <th>Pris</th>
-                <th>Märke</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% products.forEach(product => { %>
-                <tr>
-                    <td><%= product.id %></td>
-                    <td><%= product.namn %></td>
-                    <td><%= product.price %></td>
-                    <td><%= product.brand %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
+     <header>
+    <!-- Logo Section -->
+    <div class="logo">
+      <img src="/images/300x150.svg" alt="Logo" class="responsive">
+      <div class="logo-bottom"><!-- Novi kontejner koji grupiše search-bar i icons -->
+        <div class="search-bar">
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="icons">
+          <img src="suit-heart-fill.svg" alt="Hjärta">
+          <img src="basket2.svg" alt="Väska">
+        </div>
+      </div>
+    </div>
+    <!-- Navbar Section kao sibling -->
+    <div class="navbar">
+      <ul class="tags">
+        <li><a href="#hem">Hem</a></li>
+        <li><a href="#Bestsäljare">Bestsäljare</a></li>
+        <li><a href="#Kvinnor">Kvinnor</a></li>
+        <li><a href="#Män">Män</a></li>
+      </ul>
+    </div>
   </body>
 </html>

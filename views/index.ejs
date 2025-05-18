@@ -18,10 +18,10 @@
         <tbody>
             <% products.forEach(product => { %>
                 <tr>
-                    <td><%= id %></td>
-                    <td><%= name %></td>
-                    <td><%= price %></td>
-                    <td><%= brand %></td>
+                    <td><%= product.id %></td>
+                    <td><%= product.namn %></td>
+                    <td><%= product.price %></td>
+                    <td><%= product.brand %></td>
                 </tr>
             <% }); %>
         </tbody>

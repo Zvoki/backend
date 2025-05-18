@@ -1,8 +1,30 @@
 -- database: ./data/Populera-produkter.db
-CREATE TABLE produkter (
+DROP TABLE IF EXISTS products;
+
+CREATE TABLE products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
+    namn TEXT NOT NULL,
     price TEXT NOT NULL,
-    brand TEXT NOT NULL  
+    brand TEXT NOT NULL
 );
-SELECT * FROM "table-name";
+
+INSERT INTO products (namn, price, brand)
+VALUES
+  ('Svart T-Shirt', '199 SEK', 'Levis'),
+  ('Svart T-Shirt', '199 SEK', 'Levis'),
+  ('Svart T-Shirt', '199 SEK', 'Levis'),
+  ('Svart T-Shirt', '199 SEK', 'Levis'),
+  ('Svart T-Shirt', '199 SEK', 'Levis'),
+  ('Svart T-Shirt', '199 SEK', 'Levis'),
+  ('Svart T-Shirt', '199 SEK', 'Levis'),
+  ('Svart T-Shirt', '199 SEK', 'Levis');
+
+DROP TABLE products;
+
+INSERT INTO products (namn, price, brand) 
+VALUES
+
+
+ 
+
+

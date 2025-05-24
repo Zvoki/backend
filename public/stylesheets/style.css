@@ -1,45 +1,135 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
 }
+/* Header stilovi */
+header {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  justify-content: space-between;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+/* Logo i povezane strukture */
 
-a {
-  color: #00B7FF;
-}
-/* Osnovni stilovi za celu tabelu */
-table {
+.logo {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  background-color: white;
   width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-/* Stilizacija zaglavlja tabele */
-th {
-  background-color: #f3f3f3;
-  padding: 12px 15px;
-  text-align: left;
-  border: 1px solid #ddd;
-  color: #333;
+.logo-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* rasporedi elemente levo i desno */
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+  padding: 0;
 }
 
-/* Stilizacija ćelija tabele */
-td {
-  padding: 12px 15px;
-  text-align: left;
-  border: 1px solid #ddd;
-  color: #555;
+.logo .icons {
+  display: flex;
+  align-self: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  flex-direction: row;
 }
 
-/* Različita pozadina naizmeničnih redova */
-tbody tr:nth-of-type(odd) {
-  background: #fafafa;
+.logo>img {
+  width: 100%;
+  height: fit-content;
 }
 
-/* Hover efekat za redove */
-tbody tr:hover {
-  background: #f1f1f1;
-  transition: background-color 0.3s ease;
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* Poravnaj na levoj strani */
+  padding-top: 0;
+  margin: 0;
 }
+
+.search-bar>input {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 20px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1px;
+}
+
+.icons>img {
+  max-width: 100%;
+  height: 30px;
+  cursor: pointer;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.navbar {
+  display: flex;/*dodao zadnje*/
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3%;
+}
+
+.navbar .tags {
+  display: flex;/*dodao zadnje*/
+  margin: 0;
+  padding: 0 0 0 1%;/*gore,desno,dno,lijevo*/
+  flex-direction: column;
+  list-style: none;
+}
+.navbar .tags li {
+  margin: 0;
+  padding: 0;
+}
+.navbar .tags li a {
+  text-decoration: none;
+  color: black;
+  padding: 2%;
+  display: block;
+  width: 100%;
+}
+/* Stilovi za sekciju .first */
+.first {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  gap: 10px;
+}
+
+.right img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.left {
+  width: 90%;
+  padding: 30px;
+}
+
+.left>p {
+  padding-top: 10px;
+}
+
+
 

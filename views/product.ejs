@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>
     <%= title %>
   </title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
-
 <body>
-  <h1>
-    <%= title %>
-  </h1>
-  <header>
+<header>
     <!-- Logo Section -->
-    <div class="logo">
-      <img src="/images/300x150.svg" alt="Logo" class="responsive">
+    <div class="logo"
+      <img src="images/200x100.svg" alt="Logo" class="responsive">
       <div class="logo-bottom"><!-- Novi kontejner koji grupiše search-bar i icons -->
         <div class="search-bar">
           <input type="text" placeholder="Search...">
         </div>
         <div class="icons">
-          <img src="/images/suit-heart-fill.svg" alt="Hjärta">
-          <img src="/images/basket2.svg" alt="Väska">
+          <img src="images/suit-heart-fill.svg" alt="Hjärta">
+          <img src="images/basket2.svg" alt="Väska">
         </div>
       </div>
     </div>
@@ -35,7 +30,17 @@
         <li><a href="#Män">Män</a></li>
       </ul>
     </div>
-    <!-- Uključivanje hero sekcije -->
-    <%- include('partials/hero', heroData) %>
+  </header>
+</body>
+<body>
+    <main>
+        <section class="product-details">
+            <h1><%= product.name %></h1>
+            <img src="<%= product.image %>" alt="<%= product.name %>">
+            <p><strong>Price:</strong> <%= product.price %> SEK</p>
+            <p><%= product.description %></p>
+            <button>Add to Cart</button>
+        </section>
+    </main>
 </body>
 </html>

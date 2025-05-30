@@ -1,41 +1,7 @@
-<!DOCTYPE html>
-<html>
+<%- include('partials/hero', 
+{ imageName: '500x400.svg', 
+title: 'Lorem ipsum dolor', 
+description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt, justo erat facilisis urna, nec ultricies justo nulla non urna.' }) %>
 
-<head>
-  <title>
-    <%= title %>
-  </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
-  <h1>
-    <%= title %>
-  </h1>
-  <header>
-    <!-- Logo Section -->
-    <div class="logo">
-      <img src="/images/300x150.svg" alt="Logo" class="responsive">
-      <div class="logo-bottom"><!-- Novi kontejner koji grupiše search-bar i icons -->
-        <div class="search-bar">
-          <input type="text" placeholder="Search...">
-        </div>
-        <div class="icons">
-          <img src="/images/suit-heart-fill.svg" alt="Hjärta">
-          <img src="/images/basket2.svg" alt="Väska">
-        </div>
-      </div>
-    </div>
-    <!-- Navbar Section kao sibling -->
-    <div class="navbar">
-      <ul class="tags">
-        <li><a href="#hem">Hem</a></li>
-        <li><a href="#Bestsäljare">Bestsäljare</a></li>
-        <li><a href="#Kvinnor">Kvinnor</a></li>
-        <li><a href="#Män">Män</a></li>
-      </ul>
-    </div>
-    <!-- Uključivanje hero sekcije -->
-    <%- include('partials/hero', heroData) %>
-</body>
-</html>
+<%- include('partials/product-grid', { products: products }) %>
+<%- include('partials/sma-ikoner') %>

@@ -7,12 +7,18 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
+const expressEjsLayouts = require('express-ejs-layouts');
+const { exit } = require('process');
 
 var app = express();
+// Uključi express-ejs-layouts middleware
+app.use(expressEjsLayouts);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+ // Set the default layout for EJS
+app.set('layout', 'layouts/public');
 
 app.use(logger('dev'));
 app.use(express.json());

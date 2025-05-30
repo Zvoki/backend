@@ -1,7 +1,71 @@
+/* Osnovni stilovi */
 * {
   margin: 0;
   padding: 0;
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* sprečava prelamanje teksta*/
+  border: 0;
+}
+
+/* Osnovni stilovi za mobilne uređaje (default: ispod 640px) */
+html {
+  font-size: 16px;
+  /* Osnovna veličina - 1rem = 16px */
+}
+
+p {
+  font-size: 1rem;
+  /* 16px */
+}
+
+h3 {
+  font-size: 1.5rem;
+  /* 24px */
+}
+
+h2 {
+  font-size: 2rem;
+  /* 32px */
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Osnovni stilovi (mobil-first pristup) */
+.product-display-extra {
+  display: grid;
+  width: 100%;
+  grid-auto-rows: auto;
+  gap: 10px;
+  padding: 10px;
+}
+
+.product-display-extra {
+  display: none;
+}
+
 /* Header stilovi */
 header {
   display: flex;
@@ -11,8 +75,8 @@ header {
   padding: 10px 20px;
   flex-wrap: wrap;
 }
-/* Logo i povezane strukture */
 
+/* Logo i povezane strukture */
 .logo {
   display: flex;
   flex-direction: column;
@@ -37,7 +101,7 @@ header {
   display: flex;
   align-self: center;
   flex-wrap: wrap;
-  gap: 10px 20px;
+  /*gap: 10px 20px;*/
   flex-direction: row;
 }
 
@@ -98,13 +162,7 @@ header {
   margin: 0;
   padding: 0;
 }
-.navbar .tags li a {
-  text-decoration: none;
-  color: black;
-  padding: 2%;
-  display: block;
-  width: 100%;
-}
+
 /* Stilovi za sekciju .first */
 .first {
   display: flex;
@@ -129,6 +187,126 @@ header {
 
 .left>p {
   padding-top: 10px;
+}
+
+.spot-text {
+  display: none;
+}
+
+/* Stilovi za caption unutar <figure> */
+/* Organizujemo figcaption u dva bloka:
+   - .left-caption (sadrži naslov i podnaslov)
+   - .right-caption (sadrži cenu) */
+.image-container figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 4px;
+}
+
+.left-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.caption-top {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.caption-sub {
+  font-size: 0.8rem;
+}
+
+.right-caption {
+  display: flex;
+  align-self: start;
+  font-size: 0.9rem;
+}
+
+/* Container – raspored proizvoda */
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+.container .image-container {
+  align-self: center;
+  left: 20px;
+}
+.item-extra {
+  display: none;
+}
+
+.product-display-extra {
+  display: none;
+}
+/* Stilovi za .product-details */
+.product-details >img {
+  width: 100%;
+  height: auto;
+}
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px;
+}
+.t-shirt {
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items:start;
+  padding: 0;
+  margin-bottom: 1%;
+}
+.levis {
+  display: flex;
+  flex-direction:row;
+  align-items: start;
+  padding: 0;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  width: 100%;
+}
+.beskrivning {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  padding: 0;
+  margin-bottom: 2%;
+}
+.price {
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  padding: 0;
+  margin-bottom: 2%;
+}
+/* Stilovi za sekciju smaikoner */
+.smaikoner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 10px 0 10px 10px;
+  /*top, right, bottom i left*/
+}
+
+.smal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 

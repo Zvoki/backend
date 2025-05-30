@@ -3,21 +3,22 @@ DROP TABLE IF EXISTS products;
 
 CREATE TABLE products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    image_url TEXT NOT NULL,
     namn TEXT NOT NULL,
     price TEXT NOT NULL,
     brand TEXT NOT NULL
 );
 
-INSERT INTO products (namn, price, brand)
+INSERT INTO products (image_url,namn, price, brand)
 VALUES
-  ('Svart T-Shirt', '199 SEK', 'Levis'),
-  ('Svart T-Shirt', '199 SEK', 'Levis'),
-  ('Svart T-Shirt', '199 SEK', 'Levis'),
-  ('Svart T-Shirt', '199 SEK', 'Levis'),
-  ('Svart T-Shirt', '199 SEK', 'Levis'),
-  ('Svart T-Shirt', '199 SEK', 'Levis'),
-  ('Svart T-Shirt', '199 SEK', 'Levis'),
-  ('Svart T-Shirt', '199 SEK', 'Levis');
+ ('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
+('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
+('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
+('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
+('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
+('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
+('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
+('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis');
 
 DROP TABLE products;
 

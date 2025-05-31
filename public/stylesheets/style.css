@@ -1,7 +1,9 @@
 /* Osnovni stilovi */
-* {
+.my-wraper * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  /* Koristan dodatak radi konzistentnosti */
 }
 
 .visually-hidden {
@@ -42,10 +44,10 @@ h1 {
   font-size: 2.5rem;
 }
 
-img {
+/*img {
   display: block;
   max-width: 100%;
-}
+}*/
 
 html,
 body {
@@ -53,18 +55,19 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
-/* Osnovni stilovi (mobil-first pristup) */
+/* Osnovni stilovi (mobil-first pristup)
 .product-display-extra {
   display: grid;
   width: 100%;
   grid-auto-rows: auto;
   gap: 10px;
   padding: 10px;
+  display: none;
 }
 
 .product-display-extra {
   display: none;
-}
+} */
 
 /* Header stilovi */
 header {
@@ -145,19 +148,23 @@ header {
 }
 
 .navbar {
-  display: flex;/*dodao zadnje*/
+  display: flex;
+  /*dodao zadnje*/
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 3%;
 }
 
 .navbar .tags {
-  display: flex;/*dodao zadnje*/
+  display: flex;
+  /*dodao zadnje*/
   margin: 0;
-  padding: 0 0 0 1%;/*gore,desno,dno,lijevo*/
+  padding: 0 0 0 1%;
+  /*gore,desno,dno,lijevo*/
   flex-direction: column;
   list-style: none;
 }
+
 .navbar .tags li {
   margin: 0;
   padding: 0;
@@ -242,6 +249,7 @@ header {
   align-self: center;
   left: 20px;
 }
+
 .item-extra {
   display: none;
 }
@@ -249,34 +257,39 @@ header {
 .product-display-extra {
   display: none;
 }
+
 /* Stilovi za .product-details */
-.product-details >img {
+.product-details>img {
   width: 100%;
   height: auto;
 }
+
 .product-details {
   display: flex;
   flex-direction: column;
   align-items: start;
   padding: 20px;
 }
+
 .t-shirt {
   font-weight: bold;
   display: flex;
   flex-direction: row;
-  align-items:start;
+  align-items: start;
   padding: 0;
   margin-bottom: 1%;
 }
+
 .levis {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   align-items: start;
   padding: 0;
   margin-bottom: 1%;
   margin-top: 1%;
   width: 100%;
 }
+
 .beskrivning {
   display: flex;
   flex-direction: row;
@@ -284,6 +297,7 @@ header {
   padding: 0;
   margin-bottom: 2%;
 }
+
 .price {
   font-weight: bold;
   display: flex;
@@ -292,6 +306,7 @@ header {
   padding: 0;
   margin-bottom: 2%;
 }
+
 /* Stilovi za sekciju smaikoner */
 .smaikoner {
   display: flex;
@@ -309,5 +324,37 @@ header {
   gap: 10px;
 }
 
-
-
+/* Glavni Acordian kontejner menija s border‑om */
+  .menu-container {
+    border: 2px solid #000;
+    width: 100%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  /* Stil za elemente “Shopping” i “Mina Sidor” */
+  .menu-header,
+  .menu-footer {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 0 12px;
+    color: #000;
+    font-weight: bold;
+  }
+  .menu-header {
+    background-color: #cce6ff;
+  }
+  /* Za "Mina Sidor" biramo nešto drugačiju pozadinu, ovdje je svjetlija nijansa */
+  .menu-footer {
+    background-color: #f0f0f0;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px 12px;
+  }
+   .menu-footer a {
+    width: 100%;
+    text-decoration: none;
+    color: #000;
+  }

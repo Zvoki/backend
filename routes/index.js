@@ -38,5 +38,29 @@ router.get('/products/:id', function (req, res) {
     product: product
   });
 });
+router.get('/search', (req, res) => {
+  const { q } = req.query;
+  let query = 'SELECT * FROM products';
+  let params = [];
+
+  // Ako postoji query parametar, dodaj WHERE klauzulu
+  if (q) {
+    query += ' WHERE LOWER(namn) LIKE LOWER(?)';
+    params.push(`%${q}%`);
+  }
+
+  // Pripremi SQL izjavu
+  const stmt = db.prepare(query);
+
+  // Izvrši upit koristeći spread-operator za prosleđivanje parametara
+  const products = stmt.all(...params);
+
+  res.render('index', {
+    title: 'Freaky Fashion',
+    products: products,
+    searchQuery: q // Prosledi query za pretragu u view
+   
+  });
+});
 
 module.exports = router;

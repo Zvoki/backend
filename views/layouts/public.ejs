@@ -12,9 +12,14 @@
             <img src="/images/200x100.svg" alt="Logo" class="responsive">
             <div class="logo-bottom">
                 <!-- Novi kontejner koji grupiše search-bar i icons -->
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                </div>
+                <form class="search-bar" method="GET" action="/search">
+                    <input type="search" name="q" placeholder="Sök bland produkter">
+                    <button type="submit">Traži</button>
+                </form>
+
+                <!-- <div class="search-bar">
+                    <input type="text"name="q" placeholder="Sök bland produkter">
+                </div>-->
                 <div class="icons">
                     <img src="/images/suit-heart-fill.svg" alt="Hjärta">
                     <img src="/images/basket2.svg" alt="Väska">
@@ -34,7 +39,7 @@
     </header>
     <main>
 
-            <%- body %>
+        <%- body %>
     </main>
 
 </body>

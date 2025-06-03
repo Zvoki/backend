@@ -6,7 +6,7 @@ CREATE TABLE produkter (
     brand TEXT NOT NULL,
 );
 
-INSERT INTO produkter (image_url, name, price, brand) VALUES
+INSERT INTO produkter (image_url, namn, price, brand) VALUES
 ('https://example.com/image1.jpg', 'Svart T-Shirt', '199 SEK', 'Levis'),
 ('https://example.com/image2.jpg', 'Svart T-Shirt', '199 SEK', 'Levis'),
 ('https://example.com/image3.jpg', 'Svart T-Shirt', '199 SEK', 'Levis'),

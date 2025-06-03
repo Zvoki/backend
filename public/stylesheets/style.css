@@ -245,10 +245,22 @@ header {
   font-size: 1rem;
 }
 
-.container .image-container {
-  align-self: center;
-  left: 20px;
+.image-container {
+  position: relative;
+  width: 100%;
 }
+
+.heart-icon {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 24px;
+  /*color: #e74c3c;*/
+  pointer-events: none;
+  /* da ne ometa klikove na sliku */
+}
+
+
 
 .item-extra {
   display: none;
@@ -325,35 +337,82 @@ header {
 }
 
 /* Glavni Acordian kontejner menija s border‑om */
+.menu-container {
+  /* border: 2px solid #000;*/
+  width: 100%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Stil za elemente “Shopping” i “Mina Sidor” */
+.menu-header,
+.menu-footer {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 0 12px;
+  color: #000;
+  font-weight: bold;
+}
+
+.menu-header {
+  background-color: #cce6ff;
+}
+
+/* Za "Mina Sidor" biramo nešto drugačiju pozadinu, ovdje je svjetlija nijansa */
+.menu-footer {
+  flex-direction: column;
+  padding: 8px 12px;
+}
+
+.menu-footer a {
+  width: 100%;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid black;
+}
+
+#footer {
+  display: none;
+  background: #444444;
+  font-family: 'Courier New', Courier, monospace;
+  color: lightgray;
+  padding: 10px 20px;
+  text-align: left;
+  height: auto;
+}
+
+@media (min-width: 640px) {
+  /* Stilovi za ekrane od 640px do 1023px (tableti, manji desktop) */
+.menu desktop-menu {
+    display: block;
+    /* Prikazujemo desktop meni */
+  }
+
   .menu-container {
-   /* border: 2px solid #000;*/
-    width: 100%;
+    width: 80%;
     margin: 20px auto;
-    font-family: Arial, sans-serif;
+    /* Širina i centriranje kontejnera */
   }
-  /* Stil za elemente “Shopping” i “Mina Sidor” */
-  .menu-header,
-  .menu-footer {
-    height: 60px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    padding: 0 12px;
-    color: #000;
-    font-weight: bold;
+
+  .product-display-extra {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    /* Prikazujemo proizvode u gridu */
   }
-  .menu-header {
-    background-color: #cce6ff;
+
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* Raspored proizvoda u gridu */
   }
-  /* Za "Mina Sidor" biramo nešto drugačiju pozadinu, ovdje je svjetlija nijansa */
-  .menu-footer {
-    flex-direction: column;
-    padding: 8px 12px;
-  }
-   .menu-footer a {
-    width: 100%;
-    text-decoration: none;
-    color: #000;
-    border: 1px solid black;
-  }
+}
+
+@media (min-width: 1024px) {
+  /* Stilovi za velike ekrane (desktop) */
+
+  /* Dodajte dodatne stilove po potrebi za desktop */
+}

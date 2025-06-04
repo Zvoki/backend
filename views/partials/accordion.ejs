@@ -1,16 +1,30 @@
 <!-- Učitavanje Bootstrap CSS (Bootstrap 5) -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<div class="container my-4">
-    <div class="menu-container">
+ <style>
+   
+  @media (min-width: 640px) and (max-width: 1024px) {
+    .hide-640-1024 {
+      display: none !important;
+    }
+  }
+
+  </style>
+
+<div class="container my-4 hide-640-1024">
+    
+    <div class="menu-container hide-640-1024">
         <!-- Element “Shopping” kao header -->
         <div class="menu-header">
+            
             <a href="/" class="text-decoration-none text-dark w-100">Shopping</a>
         </div>
 
         <!-- Accordion komponenta za kategorije proizvoda -->
         <div class="accordion" id="productAccordion">
+            
+
             <!-- Vinterjackor -->
-            <div class="accordion-item">
+            <div class="accordion-item"> 
                 <h2 class="accordion-header" id="headingVinterjackor">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseVinterjackor" aria-expanded="true"
@@ -74,7 +88,8 @@
         </div>
 
         <!-- Element “Mina Sidor” unutar istog kontejnera, a ne kao zaseban footer -->
-        <div class="menu-footer">
+        <div class="menu-footer hide-640-1024" >
+           
             <a href="#mina-sidor" class="text-decoration-none text-dark w-100">Mina Sidor</a>
             <a href="#kundtjanst" class="text-decoration-none text-dark w-100">Kundtjänst</a>
               <p class="text-center my-3">Freaky Fashion</p>

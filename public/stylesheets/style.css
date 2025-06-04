@@ -257,6 +257,8 @@ header {
   font-size: 24px;
   /*color: #e74c3c;*/
   pointer-events: none;
+  /* Opcionalno: postavi veći z-index da bude preko druge slike */
+  z-index: 10;
   /* da ne ometa klikove na sliku */
 }
 
@@ -383,36 +385,189 @@ header {
   text-align: left;
   height: auto;
 }
-
-@media (min-width: 640px) {
-  /* Stilovi za ekrane od 640px do 1023px (tableti, manji desktop) */
-.menu desktop-menu {
-    display: block;
-    /* Prikazujemo desktop meni */
-  }
-
-  .menu-container {
-    width: 80%;
-    margin: 20px auto;
-    /* Širina i centriranje kontejnera */
-  }
-
-  .product-display-extra {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 10px;
-    /* Prikazujemo proizvode u gridu */
-  }
-
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    /* Raspored proizvoda u gridu */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .hide-640-1024 {
+    display: none !important;
   }
 }
 
-@media (min-width: 1024px) {
-  /* Stilovi za velike ekrane (desktop) */
+@media (min-width: 640px) {
 
-  /* Dodajte dodatne stilove po potrebi za desktop */
+  /* Stilovi za ekrane od 640px do 1023px (tableti, manji desktop) */
+  /*.d-none-640 {
+    display: none !important;
+  }*/
+
+  p {
+    font-size: 0.8rem;
+    /* Primer: oko 17.6px */
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    /* Primer: oko 28px */
+  }
+
+  h2 {
+    font-size: 1rem;
+    /* Primer: oko 36px */
+  }
+
+  h1 {
+    font-size: 2.50rem;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* Možeš isprobati flex-start ili space-around ako je potrebno */
+    gap: 20px;
+  }
+
+  .logo-bottom {
+    width: auto;
+  }
+
+  .logo>img {
+    max-width: 100%;
+    align-self: flex-start;
+    width: 223px;
+    height: 100px;
+  }
+
+  .search-bar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0 30px;
+  }
+
+  .search-bar input {
+    width:
+      /*150px*/
+      110%;
+    max-width:
+      /*200px*/
+      110%;
+    padding:
+      /*10px*/
+      1%;
+    border: solid;
+    border-radius: 20px;
+  }
+
+  .icons {
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+  }
+
+  .icons img {
+    height: 30px;
+    cursor: pointer;
+    flex-direction: row;
+  }
+
+  /* Navigacija (.navbar .tags) ispod, u jednom redu */
+  .navbar .tags {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding-left: 10px;
+    list-style: none;
+  }
+
+  .first {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding:
+      /*20px*/
+      3%;
+    gap: 10px;
+  }
+
+  .right img {
+    max-width: 100%;
+    width: 600px;
+    height: auto;
+  }
+
+  .left {
+    width: 90%;
+    padding:
+      /*10px*/
+      2%;
+  }
+
+  .left>p {
+    padding-top:
+      /*10px*/
+      1%;
+  }
+
+  .container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, minmax(100px, auto));
+    align-items: center;
+  }
+
+  .smaikoner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(10px, auto));
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    /*Fiksma visina da se vidi efekat od align-content sadrzaja */
+    padding: 0 20px;
+    /* 0 za vertikalni padding, 20px za levi i desni padding */
+    margin-bottom: 0;
+    box-sizing: border-box;
+  }
+
+  .smal>img {
+    padding:
+      /*10px*/
+      4%;
+  }
+
+  #footer {
+    display: block;
+    /* Prikazujemo footer */
+    width: 100%;
+    margin: 0 auto;
+    /* Centriranje footer-a */
+    /* Širina i centriranje footer-a */
+    /* Dodajemo padding i marginu */
+    padding: 10px 20px;
+    /* Padding za footer */
+    margin-top: 20px;
+    height: auto;
+  }
+  #footer table> th td {
+   padding: 10px;
+  }
+  #footer table {
+  border-collapse: separate; /* Omogućava korišćenje border-spacing-a */
+  border-spacing: 40px 20px;   /* Prvi broj označava razmak između kolona, drugi broj između redova */
+}
+#footer> p {
+  text-align: center;
+}
+
+
+
+}
+
+@media (min-width: 1024px) {
+  /*.d-none-1024 {
+    display: none !important;
+  }*/
+
 }

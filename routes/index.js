@@ -34,7 +34,7 @@ router.get('/products/:id', function (req, res) {
 
   // Ako je proizvod pronađen, renderiramo stranicu proizvoda
   res.render('product', {
-    title: 'Freaky Fashion - Product',
+    title: 'Svart T-Shirt',
     product: product
   });
 });

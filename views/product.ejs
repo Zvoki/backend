@@ -1,17 +1,50 @@
 <main>
   <section class="product-details">
-    <h1>
-      <%= product.namn %>
-    </h1>
+    
     <img src="<%= product.image_url  %>" alt="<%= product.namn %>">
-    <div class="t-shirt"><%= product.namn %></div>
-      <div class="levis"><%= product.brand %></div>
-      <p class="beskrivning">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt, justo erat facilisis urna, nec ultricies justo nulla non urna.<%= product.description %></p>
+    <div class="t-shirt">
+      <%= product.namn %>
+    </div>
+    <div class="levis">
+      <%= product.brand %>
+    </div>
+    <p class="beskrivning">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt, justo erat facilisis
+      urna, nec ultricies justo nulla non urna.<%= product.description %>
+    </p>
     <p class="price">
       <%= product.price %>
     </p>
-    
     <button>Lägg i varukorg</button>
   </section>
-  <%- include('partials/accordion') %>
+
+  <article class="product-display">
+    <!-- Slika proizvoda -->
+    <div class="produkt-image">
+      <img src="<%= product.image_url  %>" alt="T-Shirt">
+    </div>
+    <!-- Informacije o proizvodu (naziv, marka) -->
+    <div class="produkt-info">
+      <h2 class="produkt-name">
+        <%=product.namn %>
+      </h2>
+      <p class="brand">
+        <%= product.brand %>
+      </p>
+
+      <!-- Opis proizvoda -->
+      <div class="produkt-description">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit optio aspernatur sapiente, minima ex
+          dicta animi enim corrupti dolorum cum fugiat quas sed! Fugit voluptate repellendus, quis at iure sit.
+        </p>
+      </div>
+      <!-- Cena i dugme -->
+      <div class="produkt-pris">
+       <div><%= product.price %></div>
+          <button>Lägg i Varukorg</button>
+      </div>
+    </div>
+  </article>
+
+
 </main>

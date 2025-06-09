@@ -55,20 +55,6 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
-/* Osnovni stilovi (mobil-first pristup)
-.product-display-extra {
-  display: grid;
-  width: 100%;
-  grid-auto-rows: auto;
-  gap: 10px;
-  padding: 10px;
-  display: none;
-}
-
-.product-display-extra {
-  display: none;
-} */
-
 /* Header stilovi */
 header {
   display: flex;
@@ -640,13 +626,69 @@ header {
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
-
   }
+  /* Kontejner za sve proizvode - raspored u jednom redu */
+    /* Kontejner koji drži proizvode u fleks rasporedu */
+        /* Kontejner koji drži sve proizvode */
+    .product-display-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    margin-bottom: 10px;
+    }
+    
+    /* Svaki pojedinačni proizvod */
+    .product-display {
+      flex: 0 1 calc(33.33% - 20px);
+      box-sizing: border-box;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      transition: transform 0.2s ease;
+      display: block;
+      color: #000; /* Zanimljivo za pristupačnost */
+    }
+    
+    .product-display:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Stilizacija slike proizvoda */
+    .produkt-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Kontejner za informacije koje se prikazuju ispod slike */
+    .produkt-details {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;  /* Postavlja info s lijeve, a cijenu s desne */
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    /* Info o proizvodu – naziv i brand sa lijeve strane */
+    .produkt-info {
+      text-align: left;
+    }
+    
+    /* Cijena proizvoda – poravnana s desne strane */
+    .produkt-pris {
+      text-align: right;
+      white-space: nowrap;  /* Sprečava prelamanje cijene */
+    }
+    
+    .produkt-info p,
+    .produkt-pris p {
+      margin: 5px 0;
+    }
 
-
-
-
-  /* Kraj stilovi za .product-display-extra */
+   /* Kontejner koji obuhvata sve proizvode */
 
 
 }

@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Gornji crni blok */
+.admin-header {
+  background-color: black;
+  color: white;
+  text-align: left;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Kontejner u kojem sidebar i glavni sadržaj leže jedan pored drugog */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar – blok „Produkter” */
+.sidebar {
+  width: 25%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Glavni sadržaj */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Forma organizovana u jednu kolonu */
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;  /* Razmak između elemenata */
+  align-items: flex-start; /* Levo poravnanje */
+  max-width: 400px; /* Po želji, možeš ograničiti širinu */
+}
+
+/* Stil za etikete i polja */
+.form-column label {
+  font-weight: bold;
+}
+
+.form-column input,
+.form-column textarea,
+.form-column button {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.form-column button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.form-column button:hover {
+  background-color: #0056b3;
+}
+
+/* Footer stil */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+.sidebar > nav {
+  display: none;
+}

@@ -20,24 +20,7 @@ router.get('/', (req, res) => {
   });
   
 });
-// Ruta za pojedinačni proizvod
-router.get('/products/:id', function (req, res) {
-  const productId = req.params.id;
-  const sql = 'SELECT * FROM products WHERE id = ?';
-  const select = db.prepare(sql);
-  const product = select.get(productId);
 
-  if (!product) {
-    // Ako proizvod nije pronađen, vraćamo status 404
-    return res.status(404).send('Product not found');
-  }
-
-  // Ako je proizvod pronađen, renderiramo stranicu proizvoda
-  res.render('product', {
-    title: 'Svart T-Shirt',
-    product: product
-  });
-});
 router.get('/search', (req, res) => {
   const { q } = req.query;
   let query = 'SELECT * FROM products';
@@ -59,8 +42,8 @@ router.get('/search', (req, res) => {
     title: 'Freaky Fashion',
     products: products,
     searchQuery: q // Prosledi query za pretragu u view
-   
   });
+
 });
 
 module.exports = router;

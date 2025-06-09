@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/admin-style.css">
+    <title>Administration</title>
+</head>
+
+<body>
+   <!-- Gornji blok – Administration, proteže se celom širinom -->
+  <header class="admin-header">
+    Administration
+  </header>
+
+  <div class="container">
+
+    <!-- Sidebar – Produkter blok -->
+    <aside class="sidebar">
+      <h2>Produkter</h2>
+      <nav>
+        <ul>
+          <li><a href="#">Produkt 1</a></li>
+          <li><a href="#">Produkt 2</a></li>
+          <li><a href="#">Produkt 3</a></li>
+          <li><a href="#">Produkt 4</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Glavni sadržaj – Ny produkt -->
+    <main class="main-content">
+      <section>
+        <h2>Ny produkt</h2>
+        <form action="#" method="post" class="form-column">
+          <label for="name">Namn:</label>
+          <input type="text" id="name" name="name" required>
+          
+          <label for="description">Beskrivning:</label>
+          <textarea id="description" name="description" rows="4" required></textarea>
+          
+          <label for="image">Bild:</label>
+          <input type="file" id="image" name="image" accept="image/*">
+          
+          <label for="sku">SKU:</label>
+          <input type="text" id="sku" name="sku" required>
+          
+          <label for="price">Pris (SEK):</label>
+          <input type="number" id="price" name="price" required>
+          
+          <button type="submit">Lägg till</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Freaky Fashion - Alla rättigheter förbehållna.</p>
+  
+</body>
+
+</html>

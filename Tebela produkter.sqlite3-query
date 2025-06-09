@@ -9,6 +9,7 @@ CREATE TABLE products (
     brand TEXT NOT NULL
 );
 
+
 INSERT INTO products (image_url,namn, price, brand)
 VALUES
  ('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
@@ -22,8 +23,18 @@ VALUES
 
 DROP TABLE products;
 
+INSERT INTO products (namn, pris)
+SELECT name, price FROM produkter;
+
 INSERT INTO products (namn, price, brand) 
 VALUES
+
+
+
+
+
+
+
 
 
  

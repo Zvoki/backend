@@ -1,11 +1,44 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
+var Database = require('better-sqlite3');
+var db = new Database(
+  path.join('C:/Workspace/npx/backend-projekt/data/Populera-produkter.db'),
+  { verbose: console.log }
+);
 
-// GET /products
-// T.ex. /products/1, /produkter/2 osv
-router.get('/:id', function(req, res, next) {
-  // Render the 'products' view and pass the title variable
-  res.render('detaljsidan', { title: 'Svart T-Shirt' });
+
+router.get('/', (req, res) => {
+  const sql = 'SELECT * FROM products LIMIT 3';
+  const select = db.prepare(sql);
+  const products = select.all();
+  res.render('three-products', {
+    title: 'Svart T- Shirt',
+    products: products,
+  });
+});
+
+// Ruta za prikaz pojedinačnog proizvoda, npr.: "/products/1"
+router.get('/:id', (req, res) => {
+  const productId = req.params.id;
+  const sql = 'SELECT * FROM products WHERE id = ?';
+  const select = db.prepare(sql);
+  const product = select.get(productId);
+ 
+  if (!product) {
+    return res.status(404).send('Product not found');
+  }
+   // Dohvati tri proizvoda za partial three-products
+  const sqlThree = 'SELECT * FROM products LIMIT 3';
+  const selectThree = db.prepare(sqlThree);
+  const products = selectThree.all();
+  
+
+  res.render('product', {
+    title: product.namn || 'Detalji proizvoda',
+    product: product,
+     products: products
+  });
 });
 
 module.exports = router;

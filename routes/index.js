@@ -14,9 +14,36 @@ router.get('/', (req, res) => {
   const sql = 'SELECT * FROM products';
   const select = db.prepare(sql);
   const products = select.all();
+
+  // Define dynamicSpotsData
+  const dynamicSpotsData = [
+    
+{ 
+      title: 'Spot 1', 
+      description: 'Spot beskrivning 1',
+      image: '/images/110x50.svg',
+      link: '/spot1'
+    },
+    { 
+      title: 'Spot 2', 
+      description: 'Spot beskrivning 2',
+      image: '/images/110x50.svg',
+      link: '/spot2'
+    },
+    { 
+      title: 'Spot 3', 
+      description: 'Spot beskrivning 3',
+      image: '/images/110x50.svg',
+      link: '/spot3'
+    },
+
+    // Add more data as needed
+  ];
+
   res.render('index', {
     title: 'Freaky Fashion',
-    products: products
+    products: products,
+    dynamicSpotsData: dynamicSpotsData
   });
   
 });
@@ -37,13 +64,15 @@ router.get('/search', (req, res) => {
 
   // Izvrši upit koristeći spread-operator za prosleđivanje parametara
   const products = stmt.all(...params);
+// Removed duplicate '/' route handler that only rendered dynamicSpotsData
+  const dynamicSpotsData = [
+    { title: 'Spot 1', description: 'Spot beskrivning 1' },
+    { title: 'Spot 2', description: 'Spot beskrivning 2' },
+    // Dodaj još podataka kako ti odgovara
+  ];
 
-  res.render('index', {
-    title: 'Freaky Fashion',
-    products: products,
-    searchQuery: q // Prosledi query za pretragu u view
-  });
-
+  // Prosleđujemo dynamicSpotsData za index.ejs
+  res.render('index', { dynamicSpotsData: dynamicSpotsData });
 });
 
 module.exports = router;

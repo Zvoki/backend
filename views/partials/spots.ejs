@@ -1,0 +1,18 @@
+
+<div class="spots-container">
+  <% spots.forEach(function(spot) { %>
+    <div class="spot">
+      <a href="<%= spot.link %>">
+        <figure class="image-container">
+          <img src="<%= spot.image %>" alt="Bild for product <%= spot.title %>" class="responsive">
+          <figcaption>
+            <div class="overlay-text">
+              <%= spot.title %><br>
+              <%= spot.description %>
+            </div>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
+  <% }); %>
+</div>

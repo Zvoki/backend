@@ -1,15 +1,13 @@
 <body>
 <main>
-  
-
-  <article class="product-display">
+  <article class="product-information">
     <!-- Slika proizvoda -->
-    <div class="produkt-image">
+    <div class="product-image">
       <img src="<%= product.image_url  %>" alt="T-Shirt">
     </div>
     <!-- Informacije o proizvodu (naziv, marka) -->
-    <div class="produkt-info">
-      <h2 class="produkt-name">
+    <div class="product-info">
+      <h2 class="product-name">
         <%=product.namn %>
       </h2>
       <p class="brand">
@@ -17,39 +15,40 @@
       </p>
 
       <!-- Opis proizvoda -->
-      <div class="produkt-description">
+      <div class="product-description">
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit optio aspernatur sapiente, minima ex
           dicta animi enim corrupti dolorum cum fugiat quas sed! Fugit voluptate repellendus, quis at iure sit.
         </p>
       </div>
       <!-- Cena i dugme -->
-      <div class="produkt-pris">
+      <div class="product-pris">
        <div><%= product.price %></div>
           <button>Lägg i Varukorg</button>
       </div>
     </div>
-   <div class="product-display-container">
-      <% products.slice(0, 3).forEach(function(product) { %>
-        <a href="/products/<%= product.id %>" class="product-display">
-          <div class="produkt-image">
-            <img src="<%= product.image_url %>" alt="T-Shirt">
-          </div>
-          <div class="produkt-details">
-            <!-- Informacije o proizvodu sa lijeve strane -->
-            <div class="produkt-info">
-              <p class="produkt-name"><%= product.namn %></p>
-              <p class="brand"><%= product.brand %></p>
-            </div>
-            <!-- Cijena proizvoda s desne strane -->
-            <div class="produkt-pris">
-              <p><%= product.price %> SEK</p>
-            </div>
-          </div>
-        </a>
-      <% }); %>
-    </div>
   </article>
+  <!-- Prikaz proizvoda -->
+  <div class="product-display-container">
+    <% products.slice(0, 3).forEach(function(product) { %>
+      <a href="/products/<%= product.id %>" class="product-display">
+        <div class="product-image">
+          <img src="<%= product.image_url %>" alt="T-Shirt">
+        </div>
+        <div class="product-details">
+          <!-- Informacije o proizvodu sa lijeve strane -->
+          <div class="product-info">
+            <p class="product-name"><%= product.namn %></p>
+            <p class="brand"><%= product.brand %></p>
+          </div>
+          <!-- Cijena proizvoda s desne strane -->
+          <div class="product-pris">
+            <p><%= product.price %> SEK</p>
+          </div>
+        </div>
+      </a>
+    <% }); %>
+  </div>
   <%- include('partials/sma-ikoner') %>
 </main>
 </body>

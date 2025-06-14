@@ -6,6 +6,10 @@
   /* Koristan dodatak radi konzistentnosti */
 }
 
+.spots-container {
+  display: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -236,10 +240,11 @@ header {
   width: 100%;
 }
 
+
 .heart-icon {
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 60px;
+  right: 20px;
   font-size: 24px;
   /*color: #e74c3c;*/
   pointer-events: none;
@@ -379,11 +384,15 @@ header {
 }
 
 @media (min-width: 640px) {
+  .spots-container {
+    display: none;
+  }
 
   /* Stilovi za ekrane od 640px do 1023px (tableti, manji desktop) */
   /*.d-none-640 {
     display: none !important;
   }*/
+
 
   p {
     font-size: 0.8rem;
@@ -553,9 +562,284 @@ header {
     text-align: center;
   }
 
+  /* Stilovi za .product-ditail */
+  /* Kontejner za ceo prikaz proizvoda */
+  .product-information {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* Poravnanje vrhova */
+    gap: 20px;
+    /* Razmak između slike i informacija */
+    padding: 20px;
+    border: 1px solid #ccc;
+    /* Opcioni okvir */
+    width: 100%;
+  }
+
+  /* Stilizacija za kontejner slike */
+  .product-image {
+    flex: 0 0 300px;
+    /* Fiksirana širina (možeš prilagoditi prema potrebama) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  /* Stilizacija za sliku unutar .produkt-image */
+  .product-image img {
+    width: 100%;
+    height: 600px;
+  }
+
+  /* Kontejner informacija o proizvodu */
+  .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Naslov proizvoda */
+  .product-name {
+    margin: 0 0 10px;
+    font-weight: bold;
+  }
+
+  /* Brand proizvoda */
+  .brand {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* Opis proizvoda */
+  .product-description p {
+    line-height: 1.5;
+
+    margin-bottom: 10px;
+  }
+
+  /* Cena proizvoda i dugme */
+  .product-pris {
+    font-weight: bold;
+    flex-direction: column;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Stilizacija dugmeta */
+  .product-pris button {
+    color: rgb(157, 154, 154);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  /* Kontejner za sve proizvode – raspoređuje ih horizontalno */
+.product-display-container {
+  display: flex;
+  justify-content: space-between; /* rasporedi proizvode ravnomerno */
+  gap: 20px; /* razmak između proizvoda */
+  flex-wrap: nowrap; /* osigurava da su svi u jednom redu */
+  padding: 0;
+}
+
+/* Svaki proizvod se prikazuje kao kartica */
+.product-display {
+  display: flex;
+  flex-direction: column;
+  width: calc(33.33% - 20px); /* 3 proizvoda u jednom redu sa gap-om */
+  text-decoration: none;
+  color: inherit;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Slika zauzima punu širinu kartice */
+.product-image img {
+  width: 100%;
+  height: fit-content;
+  display: block;
+}
+
+/* Kontejner ispod slike - raspoređuje info sa leve i cenu sa desne strane */
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  /* Poravnaj elemente vertikalno */
+  width: 100%;
+  /* Širina da zauzme celu karticu */
+  padding: 15px;
+}
+
+/* Poravnaj .product-name i .brand ulevo */
+.product-details .product-name,
+.product-details .brand {
+  align-self: flex-start;
+}
+
+/* Poravnaj .product-pris udesno */
+.product-details .product-pris {
+  align-self: flex-start;
+  display: flex;
+  margin-left: auto;
+}
+}
+
+/* Informacije o proizvodu poravnate na početak */
+.product-info {
+  text-align: center;
+}
+
+/* Cena poravnata na kraj (desno) */
+.product-pris {
+  text-align: right;
+}
+
+/* Stilizacija teksta - prilagodi po potrebi */
+.product-name {
+  font-size: 1.2em;
+  margin: 0;
+  text-align: left;
+}
+
+.brand {
+  text-align: left;
+  font-size: 1em;
+  color: #555;
+  margin: 0;
+}
+
+.product-pris p {
+  text-align: right;
+  font-weight: bold;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+
+
+  .spots-container {
+    display: block;
+  }
+
+  /* Opcionalno, ako želiš fiksnu širinu ili drugačije dimenzije 
+  za logo sliku */
+  .logo>img {
+    width: auto;
+    /* ili neki fiksni width: 200px; */
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* .logo-bottom sada treba biti u jednom redu */
+  .logo-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    margin-left:
+      /*20px*/
+      1%;
+    /* mali razmak između loga i ostatka */
+  }
+
+  /* Pretraživač – koristi ostatak prostora, a desnom strani 
+  dodaj razmak */
+  .search-bar {
+    flex-grow: 1;
+    margin: 0
+      /*540px*/
+      68% 0 0;
+    /* razmak samo s desne strane */
+
+  }
+
+  /* Ikone – poravnaj ih u desni ugao */
+  .icons {
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+    /*flex-wrap: wrap;*/
+  }
+
+  .first {
+    display: flex;
+    width: auto;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    padding:
+      /*20px*/
+      1%;
+    gap: 10px;
+  }
+
+  .right>img {
+    width: 600px;
+    height: auto;
+    border: 1px solid black;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    /* Elementi se raspoređuju jedan ispod drugog */
+    align-items: flex-start;
+    /* Poravnanje sadržaja uz levu stranu */
+
+    /* Važno: postavi visinu ako želiš da vertikalno centriranje ima efekta */
+    height: 388px;
+    /* ili konkretna visina, npr.: height: 300px; */
+  }
+
+  h1,
+  p {
+    align-self: center;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .item-extra {
+    display: block;
+    align-self: center;
+    /* centriranje sadržaja vertikalno */
+    justify-self: center;
+    /* centriranje sadržaja horizontalno */
+    margin: 0;
+  }
+
+  .spots-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
   /* Stilovi za .product-display */
   /* Kontejner za ceo prikaz proizvoda */
-  .product-display {
+  .product-information {
     display: flex;
     align-items: flex-start;
     /* Poravnanje vrhova */
@@ -567,7 +851,7 @@ header {
   }
 
   /* Stilizacija za kontejner slike */
-  .produkt-image {
+  .product-image {
     flex: 0 0 300px;
     /* Fiksirana širina (možeš prilagoditi prema potrebama) */
     display: flex;
@@ -577,20 +861,20 @@ header {
   }
 
   /* Stilizacija za sliku unutar .produkt-image */
-  .produkt-image img {
-    width: 100%;
+  .product-image img {
+    width: 50%;
     height: auto;
   }
 
   /* Kontejner informacija o proizvodu */
-  .produkt-info {
+  .product-info {
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
   /* Naslov proizvoda */
-  .produkt-name {
+  .product-name {
     margin: 0 0 10px;
     font-weight: bold;
   }
@@ -604,7 +888,7 @@ header {
   /* Opis proizvoda */
   .produkt-description p {
     line-height: 1.5;
-   
+
     margin-bottom: 10px;
   }
 
@@ -614,7 +898,7 @@ header {
     flex-direction: column;
     font-weight: bold;
     display: flex;
-    align-items:flex-start;
+    align-items: flex-start;
     gap: 10px;
   }
 
@@ -627,75 +911,23 @@ header {
     border-radius: 5px;
     font-size: 16px;
   }
-  /* Kontejner za sve proizvode - raspored u jednom redu */
-    /* Kontejner koji drži proizvode u fleks rasporedu */
-        /* Kontejner koji drži sve proizvode */
-    .product-display-container {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    margin-bottom: 10px;
-    }
-    
-    /* Svaki pojedinačni proizvod */
-    .product-display {
-      flex: 0 1 calc(33.33% - 20px);
-      box-sizing: border-box;
-      text-decoration: none;
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 4px;
-      transition: transform 0.2s ease;
-      display: block;
-      color: #000; /* Zanimljivo za pristupačnost */
-    }
-    
-    .product-display:hover {
-      transform: scale(1.02);
-    }
-    
-    /* Stilizacija slike proizvoda */
-    .produkt-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    /* Kontejner za informacije koje se prikazuju ispod slike */
-    .produkt-details {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;  /* Postavlja info s lijeve, a cijenu s desne */
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    
-    /* Info o proizvodu – naziv i brand sa lijeve strane */
-    .produkt-info {
-      text-align: left;
-    }
-    
-    /* Cijena proizvoda – poravnana s desne strane */
-    .produkt-pris {
-      text-align: right;
-      white-space: nowrap;  /* Sprečava prelamanje cijene */
-    }
-    
-    .produkt-info p,
-    .produkt-pris p {
-      margin: 5px 0;
-    }
 
-   /* Kontejner koji obuhvata sve proizvode */
+  /* Svaki pojedinačni proizvod */
+  .product-display {
+    flex: 0 1 calc(33.33% - 20px);
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    /*transition: transform 0.2s ease;*/
+    display: block;
+    color: #000;
+    /* Zanimljivo za pristupačnost */
+  }
 
-
-}
-
-@media (min-width: 1024px) {
-  /*.d-none-1024 {
-    display: none !important;
-  }*/
+  .product-display:hover {
+    transform: scale(1.02);
+  }
 
 }

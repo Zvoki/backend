@@ -1,0 +1,21 @@
+<div class="item-extra">
+  <% products.forEach(function(product) { %>
+    <article class="spot">
+      <a href="/products/<%= product.id %>" class="spot">
+        <h1 class="spot-text"><%= product.name %></h1>
+        <figure class="image-container">
+          <img src="<%= product.image_url %>" alt="Bild for product <%= product.id %>" class="responsive">
+          <figcaption>
+            <div class="left-caption">
+              <div class="caption-top"><%= product.namn %></div>
+              <div class="caption-sub"><%= product.brand %></div>
+            </div>
+            <div class="right-caption">
+              <%= product.price %> SEK
+            </div>
+          </figcaption>
+        </figure>
+      </a>
+    </article>
+  <% }); %>
+</div>

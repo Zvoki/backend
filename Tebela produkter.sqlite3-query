@@ -6,22 +6,23 @@ CREATE TABLE products (
     image_url TEXT NOT NULL,
     namn TEXT NOT NULL,
     price TEXT NOT NULL,
-    brand TEXT NOT NULL
+    brand TEXT NOT NULL,
+    sku TEXT NOT NULL UNIQUE
 );
 
 
-INSERT INTO products (image_url,namn, price, brand)
+INSERT INTO products (image_url,namn, price, brand, sku)
 VALUES
- ('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
-('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
-('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
-('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
-('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
-('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
-('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis'),
-('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis');
+ ('/images/400x400.svg', 'Svart T-Shirt', '199 SEK', 'Levis', 'SVA001'),
+('/images/400x400.svg', 'Vit T-Shirt', '199 SEK', 'Levis', 'VIT002'),
+('/images/400x400.svg', 'Green T-Shirt', '199 SEK', 'Levis', 'GRE003'),
+('/images/400x400.svg', 'Gray T-Shirt', '199 SEK', 'Levis', 'GRY004'),
+('/images/400x400.svg', 'Yellow T-Shirt', '199 SEK', 'Levis', 'YEL005'),
+('/images/400x400.svg', 'Blue T-Shirt', '199 SEK', 'Levis', 'BLU006'),
+('/images/400x400.svg', ' PinkT-Shirt', '199 SEK', 'Levis', 'PIN007'),
+('/images/400x400.svg', 'BrownT-Shirt', '199 SEK', 'Levis', 'BRO008');
 
-DROP TABLE products;
+
 
 INSERT INTO products (namn, pris)
 SELECT name, price FROM produkter;

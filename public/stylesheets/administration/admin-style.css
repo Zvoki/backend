@@ -38,9 +38,12 @@ body {
 .form-column {
   display: flex;
   flex-direction: column;
-  gap: 15px;  /* Razmak između elemenata */
-  align-items: flex-start; /* Levo poravnanje */
-  max-width: 400px; /* Po želji, možeš ograničiti širinu */
+  gap: 15px;
+  /* Razmak između elemenata */
+  align-items: flex-start;
+  /* Levo poravnanje */
+  max-width: 400px;
+  /* Po želji, možeš ograničiti širinu */
 }
 
 /* Stil za etikete i polja */
@@ -73,6 +76,27 @@ footer {
   padding: 10px;
   background-color: #f4f4f4;
 }
-.sidebar > nav {
+
+.sidebar>nav {
   display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+thead {
+  background-color: #bbb7b7;
 }

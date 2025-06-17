@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/administration/admin-style.css">
+  <title>Administration</title>
+</head>
+
+<body>
+   <!-- Gornji blok – Administration, proteže se celom širinom -->
+  <header class="admin-header">
+    Administration
+  </header>
+
+  <div class="container">
+
+    <!-- Sidebar – Produkter blok -->
+    <aside class="sidebar">
+     </aside>
+
+    <!-- Glavni sadržaj – Ny produkt -->
+    <main class="main-content">
+      <section>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h1>Produkter</h1>
+          <a href=" http://localhost:3000/admin/products/new"><button>Ny produkt</button></a>
+        </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Namn</th>
+        <th>SKU</th>
+        <th>Pris</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% adminProducts.forEach(product => { %>
+      <tr>
+        <!-- Imaj na umu da imena kolona moraju odgovarati onima koje vrati baza -->
+        <td><%= product.namn %></td>
+        <td><%= product.sku %></td>
+        <td><%= product.price %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table> 
+      </section>
+    </main>
+    
+  </div>
+ 
+</body>
+
+</html>

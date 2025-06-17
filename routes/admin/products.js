@@ -13,16 +13,6 @@ try {
   console.error('Greška pri otvaranju baze:', err.message);
 }
 
-router.get('/', (req, res) => {
-  const sql = 'SELECT * FROM products'
-  const select = db.prepare(sql);
-  const products = select.all();
-  res.render('admin/products', {
-    title: 'Administration',
-    products: products
-  });
-});
-
 
 module.exports = router;
 

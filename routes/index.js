@@ -37,7 +37,6 @@ router.get('/', (req, res) => {
       link: '/spot3'
     },
 
-    // Add more data as needed
   ];
 
   res.render('index', {
@@ -74,5 +73,20 @@ router.get('/search', (req, res) => {
   // Prosleđujemo dynamicSpotsData za index.ejs
   res.render('index', { dynamicSpotsData: dynamicSpotsData });
 });
+// Ruta koja se aktivira za GET zahtev na /admin/products
+
+router.get('/admin/products', (req, res) => {
+  const sql = 'SELECT namn, sku, price FROM products';
+  const select = db.prepare(sql);
+  const products = select.all(); // Izvršava SQL upit i dobija sve proizvode
+  res.render('administration/products', { layout: false, adminProducts: products });
+});
+router.get('/new', (req, res, next) => {
+  // Pošto nema potrebe za dohvatom podataka,
+  // direktno renderuj odgovarajući view.
+  res.render('administration/new-product', { layout: false });
+})
+
+
 
 module.exports = router;

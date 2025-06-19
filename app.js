@@ -13,7 +13,6 @@ const expressEjsLayouts = require('express-ejs-layouts');
 const { exit } = require('process');
 
 
-
 var app = express();
 // Uključi express-ejs-layouts middleware
 app.use(expressEjsLayouts);

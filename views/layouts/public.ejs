@@ -1,48 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 
 <head>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+ <!-- <meta charset="UTF-8" <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <meta http-equiv="Accept-CH" content="Viewport-Width">
+ <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+ <!-- <title>Freaky Fashion</title>-->
 </head>
 
 <body>
-    <header>
-        <!-- Logo Section -->
-        <div class="logo">
-            <img src="/images/200x100.svg" alt="Logo" class="responsive">
-            <div class="logo-bottom">
-                <!-- Novi kontejner koji grupiše search-bar i icons -->
-                <form class="search-bar" method="GET" action="/search">
-                    <input type="search" name="q" placeholder="Sök bland produkter">
-                </form>
+  <header>
+    <!-- Logo Section -->
+    <div class="logo">
+      <img src="/images/200x100.svg" alt="Logo" class="responsive">
+      <div class="logo-bottom">
+        <!-- Novi kontejner koji grupiše search-bar i icons -->
+        <form class="search-bar" method="GET" action="/search">
+          <input type="search" name="q" placeholder="Sök bland produkter">
+        </form>
 
-                <!-- <div class="search-bar">
+        <!-- <div class="search-bar">
                     <input type="text"name="q" placeholder="Sök bland produkter">
                 </div>-->
-                <div class="icons">
-                    <img src="/images/suit-heart-fill.svg" alt="Hjärta">
-                    <img src="/images/basket2.svg" alt="Väska">
-                </div>
-            </div>
+        <div class="icons">
+          <img src="/images/suit-heart-fill.svg" alt="Hjärta">
+          <img src="/images/basket2.svg" alt="Väska">
         </div>
+      </div>
+    </div>
 
-        <!-- Navbar Section kao sibling -->
-        <div class="navbar">
-            <ul class="tags">
-                <li><a href="#hem">Hem</a></li>
-                <li><a href="#Bestsäljare">Bestsäljare</a></li>
-                <li><a href="#Kvinnor">Kvinnor</a></li>
-                <li><a href="#Män">Män</a></li>
-            </ul>
-        </div>
-    </header>
-    <main>
-        <%- body %>
-    </main>
+    <!-- Navbar Section kao sibling -->
+    <div class="navbar">
+      <ul class="tags">
+        <li><a href="#hem">Hem</a></li>
+        <li><a href="#Bestsäljare">Bestsäljare</a></li>
+        <li><a href="#Kvinnor">Kvinnor</a></li>
+        <li><a href="#Män">Män</a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <%- body %>
+  </main>
 
-<footer id="footer">
+  <footer id="footer">
     <table>
-    <thead>
+      <thead>
         <tr>
           <th>Shopping</th>
           <th>Mina sidor</th>
@@ -53,12 +57,12 @@
         <tr>
           <td>Vinterjackor</td>
           <td>Mina Ordrar</td>
-            <td>Returnpolicy</td>
+          <td>Returnpolicy</td>
         </tr>
         <tr>
           <td>Puffjackor</td>
           <td>Mitt Konto</td>
-            <td>Integritetpolicy</td>
+          <td>Integritetpolicy</td>
         </tr>
         <tr>
           <td>Kappa</td>
@@ -71,9 +75,8 @@
       </tbody>
     </table>
     <p>&copy; Freaky Fashon</p>
-</footer>
+  </footer>
 
 </body>
+
 </html>
-
-

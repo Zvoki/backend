@@ -5,43 +5,41 @@ var multer = require('multer');
 var upload = multer({ dest: path.join(__dirname, '../public/uploads/') });
 var Database = require('better-sqlite3');
 var db = new Database(path.join('C:/Workspace/npx/backend-projekt/data/Populera-produkter.db'), { verbose: console.log });
-//Annan sökväg för databasen;
-//var db = new Database(path.join(__dirname, 'data', 'Populera-produkter.db'), { verbose: console.log });
-/*
-  Nije greška što ste ručno naveli SKU brojeve kao što je "VIT006".
-  SKU (Stock Keeping Unit) je identifikator proizvoda i često se ručno određuje prema internim pravilima firme.
-  Bitno je samo da su SKU brojevi jedinstveni za svaki proizvod u bazi.
-*/
+var app = express();
+// 1) Opt-in za Client Hints – mora biti prvi
+app.use((req, res, next) => {
+  res.set('Accept-CH', 'Viewport-Width');
+  res.set('Vary', 'Viewport-Width');
+  next();
+});
+2// Ovo middleware postavlja req.isMobile na true ako je viewport-width manji od 640px
 
-// Redosled polja u kodu i bazi treba da odgovara redosledu iz formulara:
-// Namn, Beskrivning, Bild URL, Märke, SKU, Pris (SEK)
+/**
+ * Helper middleware for error handling.
+ * Ovo middleware hvata SQL greške i šalje korisniku poruku.
+ */
+app.use((err, req, res, next) => {
+  if (err && err.code === 'SQLITE_ERROR') {
+    console.error('SQLITE_ERROR:', err.message);
+    return res.status(500).send('Fel med databas: ' + err.message);
+  }
+  next(err);
+});
+app.get('/products/:id', (req, res) => {
+  const template = req.isMobile
+    ? 'product-mobile'
+    : 'product-desktop';
+  res.render(template, {
+    id: req.params.id,
+    title: `Svart T-Shirt ${req.params.id}`
+  });
+});
 
-// Prilikom unosa u bazu (INSERT INTO products ...), redosled vrednosti treba da bude:
-// namn, description, image_url, brand, sku, price
-
-// Proveri da li je redosled u formi i kodu isti:
-// 1. Namn         -> namn
-// 2. Beskrivning  -> description
-// 3. Bild URL     -> image_url
-// 4. Märke        -> brand
-// 5. SKU          -> sku
-// 6. Pris (SEK)   -> price
-
-// U kodu je redosled već ispravan:
-// const { namn, description, brand, sku, price } = req.body;
-// let image_url = ...;
-// stmt.run(namn, description, image_url, brand, sku, price);
-
-// Dakle, redosled polja u kodu odgovara redosledu iz formulara.
-
-/* GET home page. */
-// Example: Define 'produkt' as an empty array or your actual product data
-// Ruta za glavnu stranicu
 router.get('/', (req, res) => {
   const sql = 'SELECT * FROM products';
   const select = db.prepare(sql);
   const products = select.all();
-
+ 
   // Define dynamicSpotsData
   const dynamicSpotsData = [
     
@@ -74,6 +72,7 @@ router.get('/', (req, res) => {
   
 });
 
+
 router.get('/search', (req, res) => {
   const { q } = req.query;
   let query = 'SELECT * FROM products';
@@ -94,11 +93,16 @@ router.get('/search', (req, res) => {
   const dynamicSpotsData = [
     { title: 'Spot 1', description: 'Spot beskrivning 1' },
     { title: 'Spot 2', description: 'Spot beskrivning 2' },
+    { title: 'Spot 3', description: 'Spot beskrivning 3' },
     // Dodaj još podataka kako ti odgovara
   ];
 
   // Prosleđujemo dynamicSpotsData za index.ejs
-  res.render('index', { dynamicSpotsData: dynamicSpotsData });
+  res.render('index', {
+    title: 'Freaky Fashion',
+    products: products,
+    dynamicSpotsData: dynamicSpotsData
+  });
 });
 // Ruta koja se aktivira za GET zahtev na /admin/products
 
@@ -122,6 +126,7 @@ router.get('/admin/products/new', (req, res) => {
 // POST /admin/products/new – unos novog proizvoda
 router.post('/admin/products/new', upload.single('image'), (req, res, next) => {
 const { namn ,description, brand, sku, price } = req.body;
+console.log(namn, description, brand, sku, price);//Ovo sam sam dodao.
 const image = req.file ? req.file.filename : null;
 
 // Pripremi image_url za unos u bazu
@@ -149,7 +154,7 @@ try {
     'INSERT INTO products (namn, description, image_url, brand, sku, price) VALUES (?, ?, ?, ?, ?, ?)'
   );
   const info = stmt.run(namn, description, image_url, brand, sku, price);
-  console.log("Umetnut proizvod, ID:", info.lastInsertRowid);
+  console.log("Lagd produkt, ID:", info.lastInsertRowid);
   
   // Nakon uspešnog unosa, preusmeri na listu proizvoda u administraciji:
   res.redirect('/admin/products');
@@ -157,6 +162,7 @@ try {
   next(err);
 }
 });
+
 
 
 module.exports = router;

@@ -29,7 +29,7 @@
     </div>
   </article>
   <!-- Prikaz proizvoda -->
-  <div class="product-display-container">
+<div class="product-display-container">
     <% products.slice(0, 3).forEach(function(product) { %>
       <a href="/products/<%= product.id %>" class="product-display">
         <div class="product-image">
@@ -50,5 +50,13 @@
     <% }); %>
   </div>
   <%- include('partials/sma-ikoner') %>
+  <%- include('partials/accordion') %>
 </main>
 </body>
+<style>
+@media (max-width: 640px) {
+  .product-display-container {
+    display: none;
+  }
+}
+</style>

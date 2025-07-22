@@ -7,7 +7,6 @@ var db = new Database(
   { verbose: console.log }
 );
 
-
 router.get('/', (req, res) => {
   const sql = 'SELECT * FROM products LIMIT 3';
   const select = db.prepare(sql);
@@ -24,7 +23,7 @@ router.get('/:id', (req, res) => {
   const sql = 'SELECT * FROM products WHERE id = ?';
   const select = db.prepare(sql);
   const product = select.get(productId);
- 
+  
   if (!product) {
     return res.status(404).send('Product not found');
   }
@@ -35,10 +34,11 @@ router.get('/:id', (req, res) => {
   
 
   res.render('product', {
-    title: product.namn || 'Detalji proizvoda',
+    title: product.namn || 'Produkt detaljer',
     product: product,
      products: products
   });
 });
+
 
 module.exports = router;

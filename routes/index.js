@@ -12,7 +12,6 @@ app.use((req, res, next) => {
   res.set('Vary', 'Viewport-Width');
   next();
 });
-2// Ovo middleware postavlja req.isMobile na true ako je viewport-width manji od 640px
 
 /**
  * Helper middleware for error handling.
@@ -34,29 +33,47 @@ app.get('/products/:id', (req, res) => {
     title: `Svart T-Shirt ${req.params.id}`
   });
 });
+// routes/index.js
+
+// Neka dynamicSpotsData bude iznad, izvan router.get('/')  
+// routes/index.js
+router.get('/spot1', (req, res) => {
+  const spot = dynamicSpotsData.find(s => s.title === 'Spot 1');
+  res.render('spot-detail', { spot });
+});
+router.get('/spot2', (req, res) => {
+  const spot = dynamicSpotsData.find(s => s.title === 'Spot 2');
+  res.render('spot-detail', { spot });
+});
+router.get('/spot3', (req, res) => {
+  const spot = dynamicSpotsData.find(s => s.title === 'Spot 3');
+  res.render('spot-detail', { spot });
+});
+
+
 
 router.get('/', (req, res) => {
   const sql = 'SELECT * FROM products';
   const select = db.prepare(sql);
   const products = select.all();
- 
+
   // Define dynamicSpotsData
   const dynamicSpotsData = [
-    
-{ 
-      title: 'Spot 1', 
+
+    {
+      title: 'Spot 1',
       description: 'Spot beskrivning 1',
       image: '/images/110x50.svg',
       link: '/spot1'
     },
-    { 
-      title: 'Spot 2', 
+    {
+      title: 'Spot 2',
       description: 'Spot beskrivning 2',
       image: '/images/110x50.svg',
       link: '/spot2'
     },
-    { 
-      title: 'Spot 3', 
+    {
+      title: 'Spot 3',
       description: 'Spot beskrivning 3',
       image: '/images/110x50.svg',
       link: '/spot3'
@@ -69,9 +86,8 @@ router.get('/', (req, res) => {
     products: products,
     dynamicSpotsData: dynamicSpotsData
   });
-  
-});
 
+});
 
 router.get('/search', (req, res) => {
   const { q } = req.query;
@@ -89,7 +105,7 @@ router.get('/search', (req, res) => {
 
   // Izvrši upit koristeći spread-operator za prosleđivanje parametara
   const products = stmt.all(...params);
-// Removed duplicate '/' route handler that only rendered dynamicSpotsData
+  // Removed duplicate '/' route handler that only rendered dynamicSpotsData
   const dynamicSpotsData = [
     { title: 'Spot 1', description: 'Spot beskrivning 1' },
     { title: 'Spot 2', description: 'Spot beskrivning 2' },
@@ -125,42 +141,42 @@ router.get('/admin/products/new', (req, res) => {
 
 // POST /admin/products/new – unos novog proizvoda
 router.post('/admin/products/new', upload.single('image'), (req, res, next) => {
-const { namn ,description, brand, sku, price } = req.body;
-console.log(namn, description, brand, sku, price);//Ovo sam sam dodao.
-const image = req.file ? req.file.filename : null;
+  const { namn, description, brand, sku, price } = req.body;
+  console.log(namn, description, brand, sku, price);//Ovo sam sam dodao.
+  const image = req.file ? req.file.filename : null;
 
-// Pripremi image_url za unos u bazu
-let image_url = null;
-if (image) {
-  image_url = '/uploads/' + image;
-} else if (req.body.imageUrl) {
-  image_url = req.body.imageUrl;
-} else if (req.body.image_url) {
-  image_url = req.body.image_url;
-} else {
-  image_url = '';
-}
+  // Pripremi image_url za unos u bazu
+  let image_url = null;
+  if (image) {
+    image_url = '/uploads/' + image;
+  } else if (req.body.imageUrl) {
+    image_url = req.body.imageUrl;
+  } else if (req.body.image_url) {
+    image_url = req.body.image_url;
+  } else {
+    image_url = '';
+  }
 
-// Debug: log received fields to help diagnose missing data
-console.log('Received fields:', { namn, description, brand, sku, price, image });
-console.log('Mapped fields:', { namn, description, brand, sku, price, image_url });
+  // Debug: log received fields to help diagnose missing data
+  console.log('Received fields:', { namn, description, brand, sku, price, image });
+  console.log('Mapped fields:', { namn, description, brand, sku, price, image_url });
 
-if (!namn || !description || !brand || !sku || !price) {
-  return res.status(400).send("Alla rader är obligatoriska!");
-}
+  if (!namn || !description || !brand || !sku || !price) {
+    return res.status(400).send("Alla rader är obligatoriska!");
+  }
 
-try {
-  const stmt = db.prepare(
-    'INSERT INTO products (namn, description, image_url, brand, sku, price) VALUES (?, ?, ?, ?, ?, ?)'
-  );
-  const info = stmt.run(namn, description, image_url, brand, sku, price);
-  console.log("Lagd produkt, ID:", info.lastInsertRowid);
-  
-  // Nakon uspešnog unosa, preusmeri na listu proizvoda u administraciji:
-  res.redirect('/admin/products');
-} catch (err) {
-  next(err);
-}
+  try {
+    const stmt = db.prepare(
+      'INSERT INTO products (namn, description, image_url, brand, sku, price) VALUES (?, ?, ?, ?, ?, ?)'
+    );
+    const info = stmt.run(namn, description, image_url, brand, sku, price);
+    console.log("Lagd produkt, ID:", info.lastInsertRowid);
+
+    // Nakon uspešnog unosa, preusmeri na listu proizvoda u administraciji:
+    res.redirect('/admin/products');
+  } catch (err) {
+    next(err);
+  }
 });
 
 

@@ -1,10 +1,9 @@
-
 <div class="spots-container">
-  <% spots.forEach(function(spot) { %>
+  <% dynamicSpotsData.forEach(spot => { %>
     <div class="spot">
-      <a href="<%= spot.link %>">
+      <a href="/<%= spot.slug %>">
         <figure class="image-container">
-          <img src="<%= spot.image %>" alt="Bild for product <%= spot.title %>" class="responsive">
+          <img src="<%= spot.image %>" alt="<%= spot.title %>" class="responsive">
           <figcaption>
             <div class="overlay-text">
               <%= spot.title %><br>
@@ -14,5 +13,6 @@
         </figure>
       </a>
     </div>
-  <% }); %>
+  <% }) %>
 </div>
+

@@ -3,9 +3,29 @@
   padding: 0;
   box-sizing: border-box;
 }
-.product-display-container {
-  display:none;
+img.responsive {
+  display: block;
+  /* sprečava belu liniju ispod slike */
+  width: 100%;
+  /* skaluje se u odnosu na roditelja */
+  max-width: 280px;
+  /* ne bude šira od 280px */
+  height: auto;
+  /* zadržava proporcije */
+  margin-right: 10px;
+  /* ako ti treba razmak sa desne */
 }
+
+html {
+  box-sizing: border-box;
+}
+
+
+
+.product-display-container {
+  display: none;
+}
+
 .spots-container {
   display: none;
 }
@@ -153,11 +173,11 @@ ul li a {
   gap: 10px;
 }
 
-.right img {
+/*.right img {
   max-width: 100%;
   width: 100%;
   height: auto;
-}
+}*/
 
 .left {
   width: 90%;
@@ -266,11 +286,7 @@ ul li a {
   margin-top: 1%;
   width: 100%;
 }
-/* Globalno postavlja box-sizing na border-box za sve elemente i njihove ::before i ::after pseudo-elemente.
-  Ovo znači da padding i border ulaze u ukupnu širinu i visinu elementa, što olakšava kontrolu layout-a i sprečava neočekivano "pucanje" dizajna. */
-*, ::after, ::before {
-  box-sizing: border-box;
-}
+
 .beskrivning {
   display: flex;
   flex-direction: row;
@@ -278,6 +294,7 @@ ul li a {
   padding: 0;
   margin-bottom: 2%;
 }
+
 .product-pris {
   display: flex;
   flex-direction: column;
@@ -285,9 +302,11 @@ ul li a {
   padding: 0;
   margin-bottom: 2%;
 }
-.product-pris button{
+
+.product-pris button {
   margin-top: 10px;
 }
+
 .price {
   font-weight: bold;
   display: flex;
@@ -303,17 +322,18 @@ ul li a {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  
   gap: 20px;
   padding: 10px 0 10px 10px;
   /*top, right, bottom i left*/
 }
+
 
 .smal {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .smal>img {
   width: 50px;
   height: 50px;
@@ -376,6 +396,10 @@ ul li a {
 }
 
 @media (min-width: 640px) {
+  img.responsive {
+    max-width: 360px;
+    /* malo širi viewporti, npr. mali tableti */
+  }
 
   header,
   main,
@@ -478,12 +502,11 @@ ul li a {
   }
 
   .first {
-    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    /* dodaje razmak */
     align-items: center;
-    text-align: center;
-    padding: 3%;
-    gap: 10px;
+    /* poravnava gore */
   }
 
   .right img {
@@ -504,34 +527,18 @@ ul li a {
       1%;
   }
 
-
-  .product-display-container {
-    flex-wrap: wrap;
-  }
-
   .container {
-    display: grid;
-    width: 100%;
+    /*display: grid;*/
+    /*width: 100%;*/
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, minmax(100px, auto));
     align-items: center;
   }
 
-  .smaikoner {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, minmax(10px, auto));
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    height: auto;
-    padding: 0 20px;
-    margin-bottom: 0;
-    box-sizing: border-box;
-  }
-
   .smal>img {
     padding: 4%;
+    width: 70px;
+    height: 70px;
   }
 
   #footer {
@@ -567,15 +574,9 @@ ul li a {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    /* Poravnanje vrhova */
-
     gap: 20px;
-    /* Razmak između slike i informacija */
-
     padding: 20px;
     border: 1px solid #ccc;
-    /* Opcioni okvir */
-
     width: 100%;
   }
 
@@ -662,18 +663,24 @@ ul li a {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
+    height: 100%;
   }
 
-  /* Slika zauzima punu širinu kartice */
+  .product-image {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 200px;
+    /* Adjust as needed */
+  }
+
   .product-image img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     display: block;
-  }
-
-  img.responsive {
-    width: 280px;
-    height: auto;
+    margin: 0;
   }
 
   /* Kontejner ispod slike - raspoređuje info sa leve i cenu sa desne strane */
@@ -728,11 +735,36 @@ ul li a {
     font-weight: bold;
     margin: 0;
   }
+
+  .smaikoner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(10px, auto));
+    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 0 20px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    text-align: center;
+    place-items: center;
+  }
+
+  .smal>img {
+    padding: 4%;
+    width: 50px;
+    height: 50px;
+  }
 }
 
 @media (min-width: 1024px) {
   .hide-640-1024 {
     display: none !important;
+  }
+
+  img.responsive {
+    max-width: 480px;
+    /* malo širi viewporti, npr. mali tableti */
   }
 
 
@@ -778,15 +810,22 @@ ul li a {
     flex-grow: 1;
     justify-content: flex-start;
     margin-right: 20px;
-
   }
+
+  .search-bar>input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 20px;
+  }
+
 
   /* Ikone – poravnaj ih u desni ugao */
   .logo .icons {
     display: flex;
     flex-direction: row;
     gap: 15px;
-
     justify-content: end;
   }
 
@@ -797,17 +836,16 @@ ul li a {
     flex-direction: row-reverse;
     justify-content: space-evenly;
     align-items: center;
-    padding:
-      /*20px*/
-      1%;
+    padding: 20px;
     gap: 10px;
   }
 
-  .right>img {
-    width: 600px;
+  /*.right>img {
+    width: 100%;
     height: auto;
     border: 1px solid black;
-  }
+    margin-right: 40px;
+  }*/
 
   .left {
     display: flex;
@@ -827,8 +865,8 @@ ul li a {
   }
 
   .container {
-    flex-wrap: wrap;
-    display: grid;
+    /*flex-wrap: wrap;*/
+    /*display: grid;*/
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, auto);
     width: 100%;
@@ -836,7 +874,7 @@ ul li a {
     align-items: center;
     justify-content: center;
   }
-  
+
 
   .item-extra {
     display: block;
@@ -851,10 +889,31 @@ ul li a {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
+    height: auto;
     gap: 10px;
     align-items: center;
     justify-content: center;
-    margin: 0 0 0 60px; /* gore desno dole levo */
+
+  }
+
+  .spots-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0 0 0 20px;
+    /* gore desno dole levo */
+  }
+
+  .image-container {
+    position: relative;
+    /* Potrebno za pozicioniranje unutar figure */
+  }
+
+  .overlay-text {      
+  top: 10px;                /* Visina od vrha */
+  left: 30px;               /* Pomeraj ulevo */
+  padding-left: 10px;
+  font-size: 14px; 
   }
 
   /* Stilovi za .product-display */
@@ -871,7 +930,7 @@ ul li a {
     border: 1px solid #ccc;
     /* Opcioni okvir */
   }
-  
+
   .product-image {
     flex: 0 0 400px;
     display: flex;
@@ -969,13 +1028,22 @@ ul li a {
 
   .smaikoner {
     display: grid;
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(10px, auto));
     align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 0 20px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    place-items: center;
   }
+
   .smal>img {
     padding: 4%;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
   }
 
   #footer {
@@ -1004,4 +1072,5 @@ ul li a {
   #footer>p {
     text-align: center;
   }
+
 }

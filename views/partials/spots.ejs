@@ -1,9 +1,14 @@
 <div class="spots-container">
+
   <% dynamicSpotsData.forEach(spot => { %>
     <div class="spot">
       <a href="/<%= spot.slug %>">
         <figure class="image-container">
-          <img src="<%= spot.image %>" alt="<%= spot.title %>" class="responsive">
+          <img
+            src="<%= spot.image %>"
+            alt="<%= spot.title %>"
+            class="responsive"
+          >
           <figcaption>
             <div class="overlay-text">
               <%= spot.title %><br>
@@ -14,5 +19,8 @@
       </a>
     </div>
   <% }) %>
+
 </div>
+
+
 

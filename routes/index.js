@@ -6,7 +6,12 @@ var upload = multer({ dest: path.join(__dirname, '../public/uploads/') });
 var Database = require('better-sqlite3');
 var db = new Database(path.join('C:/Workspace/npx/backend-projekt/data/Populera-produkter.db'), { verbose: console.log });
 var app = express();
-
+// 1) Opt-in za Client Hints – mora biti prvi
+app.use((req, res, next) => {
+  res.set('Accept-CH', 'Viewport-Width');
+  res.set('Vary', 'Viewport-Width');
+  next();
+});
 // Define dynamicSpotsData
   const dynamicSpotsData = [
 
@@ -33,33 +38,19 @@ var app = express();
     },
 
   ];
-  router.get('/', (req, res) => {
-  const sql = 'SELECT * FROM products';
-  const select = db.prepare(sql);
-  const products = select.all();
 
-  res.render('index', {
-    title: 'Freaky Fashion',
-    products: products,
-    dynamicSpotsData: dynamicSpotsData
-  });
-});
 
-// 3) Jedna parametrizovana ruta za sve spotove
-router.get('/:slug', (req, res) => {
-  const spot = dynamicSpotsData.find(s => s.slug === req.params.slug);
-  if (!spot) {
-    return res.status(404).render('404');  // ili redirect na '/'
+/**
+ * Helper middleware for error handling.
+ * Ovo middleware hvata SQL greške i šalje korisniku poruku.
+ */
+app.use((err, req, res, next) => {
+  if (err && err.code === 'SQLITE_ERROR') {
+    console.error('SQLITE_ERROR:', err.message);
+    return res.status(500).send('Fel med databas: ' + err.message);
   }
- res.render("spot-detail", {
-  title: spot.title,
-  spot: spot
+  next(err);
 });
-
-});
-
-
-
 app.get('/products/:id', (req, res) => {
   const template = req.isMobile
     ? 'product-mobile'
@@ -69,18 +60,37 @@ app.get('/products/:id', (req, res) => {
     title: `Svart T-Shirt ${req.params.id}`
   });
 });
+// routes/index.js
 
 router.get('/spot1', (req, res) => {
-  const spot = dynamicSpotsData.find(s => s.title === 'Spot 1');
-  res.render('spot-detail', { spot });
+  const spot = dynamicSpotsData.find(s => s.slug === 'spot1');
+  res.render('spot-detail', { spot, title: spot.name || 'Spot 1' });
 });
+
 router.get('/spot2', (req, res) => {
-  const spot = dynamicSpotsData.find(s => s.title === 'Spot 2');
-  res.render('spot-detail', { spot });
+  const spot = dynamicSpotsData.find(s => s.slug === 'spot2');
+  res.render('spot-detail', { spot, title: spot.name || 'Spot 2' });
 });
+
 router.get('/spot3', (req, res) => {
-  const spot = dynamicSpotsData.find(s => s.title === 'Spot 3');
-  res.render('spot-detail', { spot });
+  const spot = dynamicSpotsData.find(s => s.slug === 'spot3');
+  res.render('spot-detail', { spot, title: spot.name || 'Spot 3' });
+});
+
+
+
+
+router.get('/', (req, res) => {
+  const sql = 'SELECT * FROM products';
+  const select = db.prepare(sql);
+  const products = select.all();
+
+  res.render('index', {
+    title: 'Freaky Fashion',
+    products: products,
+    dynamicSpotsData: dynamicSpotsData
+  });
+
 });
 
 
@@ -101,13 +111,7 @@ router.get('/search', (req, res) => {
   // Izvrši upit koristeći spread-operator za prosleđivanje parametara
   const products = stmt.all(...params);
   // Removed duplicate '/' route handler that only rendered dynamicSpotsData
-  const dynamicSpotsData = [
-    { title: 'Spot 1', description: 'Spot beskrivning 1' },
-    { title: 'Spot 2', description: 'Spot beskrivning 2' },
-    { title: 'Spot 3', description: 'Spot beskrivning 3' },
-    // Dodaj još podataka kako ti odgovara
-  ];
-
+  
   // Prosleđujemo dynamicSpotsData za index.ejs
   res.render('index', {
     title: 'Freaky Fashion',
@@ -173,4 +177,5 @@ router.post('/admin/products/new', upload.single('image'), (req, res, next) => {
     next(err);
   }
 });
+
 module.exports = router;

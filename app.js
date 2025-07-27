@@ -20,12 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
  // Set the default layout for EJS
 app.set('layout', 'layouts/public');
-// 1) Opt-in za Client Hints – mora biti prvi
-app.use((req, res, next) => {
-  res.set('Accept-CH', 'Viewport-Width');
-  res.set('Vary', 'Viewport-Width');
-  next();
-});
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -35,13 +30,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/admin/products', adminProductsRouter);
-app.use((err, req, res, next) => {
-  if (err && err.code === 'SQLITE_ERROR') {
-    console.error('SQLITE_ERROR:', err.message);
-    return res.status(500).send('Fel med databas: ' + err.message);
-  }
-  next(err);
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

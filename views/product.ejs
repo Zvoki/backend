@@ -10,9 +10,9 @@
       <h2 class="product-name">
         <%=product.namn %>
       </h2>
-      <p class="brand">
+      <div class="brand">
         <%= product.brand %>
-      </p>
+      </div>
 
       <!-- Opis proizvoda -->
       <div class="product-description">
@@ -28,6 +28,7 @@
       </div>
     </div>
   </article>
+   <h2 class="liknande-produkter">Liknande produkter</h2>
   <!-- Prikaz proizvoda -->
 <div class="product-display-container">
     <% products.slice(0, 3).forEach(function(product) { %>
@@ -52,6 +53,7 @@
   <%- include('partials/sma-ikoner') %>
   <%- include('partials/accordion') %>
 </main>
+
 </body>
 <style>
 @media (max-width: 640px) {

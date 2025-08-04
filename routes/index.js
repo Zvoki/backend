@@ -60,6 +60,7 @@ app.get('/products/:id', (req, res) => {
     title: `Svart T-Shirt ${req.params.id}`
   });
 });
+
 // routes/index.js
 
 router.get('/spot1', (req, res) => {
@@ -177,5 +178,7 @@ router.post('/admin/products/new', upload.single('image'), (req, res, next) => {
     next(err);
   }
 });
+
+
 
 module.exports = router;

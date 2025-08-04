@@ -1,4 +1,7 @@
 <!-- views/partials/ProductGrid.ejs -->
+<h2 class="product-heading" id="search-heading">
+  Hittade <%= products.length %> liknande produkter </h2>
+
 <div class="container">
   <% products.forEach(function(product) { %>
     <article class="spot">
@@ -25,4 +28,3 @@
     </article>
     <% }); %>
 </div>
-

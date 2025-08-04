@@ -2,13 +2,16 @@
 <html lang="sv">
 
 <head>
- <!-- <meta charset="UTF-8" <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
   <meta http-equiv="Accept-CH" content="Viewport-Width">
- <title><%= title %></title>
+  <title>
+    <%= title %>
+  </title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
+
 <body>
+
   <header>
     <!-- Logo Section -->
     <div class="logo">
@@ -76,6 +79,26 @@
     <p>&copy; Freaky Fashon</p>
   </footer>
 
+
 </body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const heading = document.getElementById("search-heading");
+  const isSearchPage = window.location.pathname === "/search";
+
+  if (isSearchPage) {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 640) {
+      heading.style.display = "block";
+    } else if (screenWidth >= 640 && screenWidth < 1024) {
+      heading.style.display = "block";
+    } else if (screenWidth >= 1024) {
+      heading.style.display = "block";
+    }
+  }
+});
+
+</script>
 
 </html>

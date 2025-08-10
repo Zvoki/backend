@@ -1,53 +1,48 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var createError = require('http-errors');               // Skapar HTTP-felobjekt för felhantering
+var express = require('express');                       // Importerar Express-ramverket
+var path = require('path');                             // Hanterar fil- och katalogvägar
+var cookieParser = require('cookie-parser');            // Parserar cookies i inkommande förfrågningar
+var logger = require('morgan');                         // Loggar HTTP-förfrågningar
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var productsRouter = require('./routes/products');
-var adminProductsRouter = require('./routes/admin/products');
-const expressEjsLayouts = require('express-ejs-layouts');
-const { exit } = require('process');
+var indexRouter = require('./routes/index');             // Router för startsidan
+var usersRouter = require('./routes/users');             // Router för användarhantering
+var productsRouter = require('./routes/products');       // Router för produktendpoints
+var adminProductsRouter = require('./routes/admin/products'); // Router för admin-produkter
+const expressEjsLayouts = require('express-ejs-layouts'); // Middleware för EJS-layouts
+const { exit } = require('process');                     // Ger möjlighet att avsluta Node-processen
 
-var app = express();
-// Uključi express-ejs-layouts middleware
-app.use(expressEjsLayouts);
+var app = express();                                    // Skapar Express-applikationen
+
+app.use(expressEjsLayouts);                             // Aktiverar EJS-layouts middleware
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
- // Set the default layout for EJS
-app.set('layout', 'layouts/public');
+app.set('views', path.join(__dirname, 'views'));        // Anger katalogen för vyfiler
+app.set('view engine', 'ejs');                          // Sätter EJS som vy-motor
+app.set('layout', 'layouts/public');                    // Väljer standardlayout för alla vyer
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/products', productsRouter);
-app.use('/admin/products', adminProductsRouter);
+app.use(logger('dev'));                                 // Använder Morgan i utvecklingsläge för loggning
+app.use(express.json());                                // Tolkar JSON i inkommande request-body
+app.use(express.urlencoded({ extended: false }));       // Tolkar URL-kodade formulärdata
+app.use(cookieParser());                                // Parserar cookies i requesten
+app.use(express.static(path.join(__dirname, 'public'))); // Serverar statiska filer från public-mappen
 
-// catch 404 and forward to error handler
+app.use('/', indexRouter);                              // Mountar indexRouter på rotvägen
+app.use('/users', usersRouter);                         // Mountar usersRouter på /users
+app.use('/products', productsRouter);                   // Mountar productsRouter på /products
+app.use('/admin/products', adminProductsRouter);        // Mountar adminProductsRouter på /admin/products
+
+// Hantera 404 och skicka vidare till felhanteraren
 app.use(function(req, res, next) {
-  next(createError(404));
+  next(createError(404));                               // Skapar och skickar ett 404-fel vidare
 });
 
-// error handler
+// Felhanterare
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.message = err.message;                     // Gör felmeddelandet tillgängligt i vyn
+  res.locals.error = req.app.get('env') === 'development' ? err : {}; // Visa felinfo endast i utveckling
 
-  // render the error page
-  res.status(err.status || 500);
-  //res.render('error');
-  res.render('error', { layout: false });
-  
+  res.status(err.status || 500);                        // Anger HTTP-statuskod
+  res.render('error', { layout: false });               // Renderar felvyn utan layout
 });
 
-
-module.exports = app;
+module.exports = app;                                   // Exporterar app-objektet för användning i www.js

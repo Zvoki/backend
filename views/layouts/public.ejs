@@ -15,16 +15,13 @@
   <header>
     <!-- Logo Section -->
     <div class="logo">
-      <img src="/images/200x100.svg" alt="Logo" class="responsive">
+      <a href="http://localhost:3000/"><img src="/images/200x100.svg" alt="Logo" class="responsive"></a>
       <div class="logo-bottom">
         <!-- Novi kontejner koji grupiše search-bar i icons -->
         <form class="search-bar" method="GET" action="/search">
           <input type="search" name="q" placeholder="Sök bland produkter">
         </form>
 
-        <!-- <div class="search-bar">
-                    <input type="text"name="q" placeholder="Sök bland produkter">
-                </div>-->
         <div class="icons">
           <img src="/images/suit-heart-fill.svg" alt="Hjärta">
           <img src="/images/basket2.svg" alt="Väska">
@@ -83,22 +80,34 @@
 </body>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-  const heading = document.getElementById("search-heading");
-  const isSearchPage = window.location.pathname === "/search";
+    const heading = document.getElementById("search-heading");
+    const isSearchPage = window.location.pathname === "/search";
 
-  if (isSearchPage) {
-    const screenWidth = window.innerWidth;
+    if (isSearchPage) {
+      const screenWidth = window.innerWidth;
 
-    if (screenWidth < 640) {
-      heading.style.display = "block";
-    } else if (screenWidth >= 640 && screenWidth < 1024) {
-      heading.style.display = "block";
-    } else if (screenWidth >= 1024) {
-      heading.style.display = "block";
+      if (screenWidth < 640) {
+        heading.style.display = "block";
+      } else if (screenWidth >= 640 && screenWidth < 1024) {
+        heading.style.display = "block";
+      } else if (screenWidth >= 1024) {
+        heading.style.display = "block";
+      }
     }
-  }
-});
+  });
 
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const path = window.location.pathname;
+    const body = document.body;
+
+    if (path === "/") {
+      body.classList.add("home-page");
+    } else if (path.startsWith("/search")) {
+      body.classList.add("search-page");
+    }
+  });
 </script>
 
 </html>

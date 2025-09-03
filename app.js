@@ -19,7 +19,7 @@ app.use(expressEjsLayouts);                             // Aktiverar EJS-layouts
 app.set('views', path.join(__dirname, 'views'));        // Anger katalogen för vyfiler
 app.set('view engine', 'ejs');                          // Sätter EJS som vy-motor
 app.set('layout', 'layouts/public');                    // Väljer standardlayout för alla vyer
-
+//app.use används för att konfigurera middleware i Express
 app.use(logger('dev'));                                 // Använder Morgan i utvecklingsläge för loggning
 app.use(express.json());                                // Tolkar JSON i inkommande request-body
 app.use(express.urlencoded({ extended: false }));       // Tolkar URL-kodade formulärdata

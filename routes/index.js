@@ -111,7 +111,7 @@ router.get('/search', (req, res) => {
 
   // Izvrši upit koristeći spread-operator za prosleđivanje parametara
   const products = stmt.all(...params);
-  // Removed duplicate '/' route handler that only rendered dynamicSpotsData
+
   
   // Prosleđujemo dynamicSpotsData za index.ejs
   res.render('index', {

@@ -10,7 +10,7 @@ const upload = multer({
 });
 
 // Ispravna putanja s dvostrukim backslash-evima
-const dbPath = path.join('C:/Workspace/npx/backend-projekt/data/Populera-produkter.db');
+const dbPath = path.join(__dirname, '..', 'dataPopulera-produkter.db');
 let db;
 try {
   db = new Database(dbPath, { verbose: console.log });

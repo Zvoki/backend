@@ -4,7 +4,8 @@ var path = require('path');
 var multer = require('multer');
 var upload = multer({ dest: path.join(__dirname, '../public/uploads/') });
 var Database = require('better-sqlite3');
-var db = new Database(path.join('C:/Workspace/npx/backend-projekt/data/Populera-produkter.db'), { verbose: console.log });
+const dbPath = path.join(__dirname, '..', 'dataPopulera-produkter.db'); { verbose: console.log };
+const db = new Database(dbPath);
 var app = express();
 // 1) Opt-in za Client Hints – mora biti prvi
 app.use((req, res, next) => {
@@ -12,6 +13,7 @@ app.use((req, res, next) => {
   res.set('Vary', 'Viewport-Width');
   next();
 });
+//var db = new Database(path.join('C:/Workspace/npx/backend-projekt/data/Populera-produkter.db'), { verbose: console.log });
 // Define dynamicSpotsData
   const dynamicSpotsData = [
 

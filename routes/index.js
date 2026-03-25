@@ -37,15 +37,6 @@ const db = new Database(dbPath, { verbose: console.log });
 
   ];
 
-router.get('/products/:id', (req, res) => {
-  const template = req.isMobile
-    ? 'product-mobile'
-    : 'product-desktop';
-  res.render(template, {
-    id: req.params.id,
-    title: `Svart T-Shirt ${req.params.id}`
-  });
-});
 
 // routes/index.js
 
@@ -63,9 +54,6 @@ router.get('/spot3', (req, res) => {
   const spot = dynamicSpotsData.find(s => s.slug === 'spot3');
   res.render('spot-detail', { spot, title: spot.name || 'Spot 3' });
 });
-
-
-
 
 router.get('/', (req, res) => {
   const sql = 'SELECT * FROM products';

@@ -1,0 +1,107 @@
+Evo što se zapravo događa — i zašto ti **`__dirname` + path.join`** ne radi na Renderu, dok **relativna putanja** radi.
+
+---
+
+# 🔍 **Kratki odgovor**
+`__dirname` pokazuje na *drugačiju lokaciju* u Renderovom build/deploy okruženju nego što očekuješ.  
+Zato putanja:
+
+```js
+path.join(__dirname, '..', 'data', 'Populera-produkter.db')
+```
+
+završi na **krivoj fizičkoj lokaciji**, pa SQLite ne može pronaći datoteku.
+
+Ali:
+
+```js
+path.join('./data/Populera-produkter.db')
+```
+
+radi jer se izvršava **relativno na root folder projekta**, koji Render *ispravno postavlja*.
+
+---
+
+# 🧠 **Zašto se to događa?**
+
+## 1️⃣ **Render mijenja radni direktorij**
+Na Renderu, tvoj backend se ne izvršava iz istog foldera kao lokalno.  
+Primjer:
+
+- Lokalno:  
+  `__dirname` = `/Users/zvoki/projects/backend/src`
+
+- Render:  
+  `__dirname` može biti nešto poput:  
+  `/opt/render/project/src/src`  
+  ili  
+  `/opt/render/project/src/dist`
+
+Ako koristiš TypeScript → build ide u `dist/`, pa se struktura mijenja.
+
+Zato:
+
+```js
+__dirname + '..'
+```
+
+ne vodi do `/data`, nego do nepostojećeg foldera.
+
+---
+
+## 2️⃣ **Relativna putanja radi jer Render pokreće app iz root-a**
+Kad napišeš:
+
+```js
+path.join('./data/Populera-produkter.db')
+```
+
+Node traži datoteku relativno od **process.cwd()**, a Render postavlja `cwd` na root projekta:
+
+```
+/opt/render/project/src/
+```
+
+i tu se nalazi tvoj `/data` folder → pa sve radi.
+
+---
+
+# ✔️ **Kako to ispravno riješiti (najbolja praksa)**
+
+Ako želiš koristiti `__dirname`, moraš ga normalizirati tako da radi i lokalno i na Renderu.
+
+Koristi:
+
+```js
+const dbPath = path.resolve(process.cwd(), 'data', 'Populera-produkter.db');
+```
+
+Ovo je najstabilniji način jer:
+
+- `process.cwd()` = root projekta (lokalno i na Renderu)
+- ne ovisi o tome gdje se nalazi buildani kod (`src`, `dist`, itd.)
+
+---
+
+# 🧪 **Želiš provjeriti što Render zapravo vidi?**
+
+Dodaj ovo privremeno:
+
+```js
+console.log("dirname:", __dirname);
+console.log("cwd:", process.cwd());
+console.log("dbPath:", dbPath);
+```
+
+Vidjet ćeš odmah da `__dirname` pokazuje na drugi folder nego što očekuješ.
+
+---
+
+# 🎯 **Zaključak**
+Radi ti samo relativna putanja jer Render pokreće backend iz root direktorija, dok `__dirname` pokazuje na buildani folder (`dist/`), pa se struktura mijenja i putanja postaje nevažeća.
+
+Ako želiš stabilno rješenje → koristi `process.cwd()`.
+
+---
+
+Ako želiš, mogu pogledati tvoj backend repo i točno ti reći koja putanja je ispravna za tvoj projekt.

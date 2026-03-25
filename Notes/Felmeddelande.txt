@@ -1,0 +1,7 @@
+opt/render/project/src/views/index.ejs:5 3| description: 'Lorem ipsum dolor sit amet, consectetur
+ adipiscing elit. Tincidunt, justo erat facilisis urna, nec ultricies justo nulla non urna.' 4| }) %>
+  >> 5| <%- include('partials/Spots', { spots: dynamicSpotsData }) %> 6|
+   <%- include('partials/product-grid', { products: products }) %> 7| 8|
+    <%- include('partials/sma-ikoner') %> Could not find the include file "partials/Spots"
+    Greska je bila u index.ejs zato sto sam imao partials/Spots umjesto partials/spots kako se zove
+     fajl spots.ejs sa malim slovom.

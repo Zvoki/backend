@@ -3,8 +3,19 @@
 This repository contains a small **Node.js/Express** backend for a product catalogue/web shop prototype. It was originally generated with the Express application generator and expanded with a lightweight SQLite database, EJS views and basic file uploads. The goal of the project is to demonstrate an end‑to‑end backend serving dynamic pages, handling database access, and providing a minimal administration interface for managing products.
 
 ---
+# Live Demo
 
-## 🚀 Features
+Backend URL:
+https://backend-ryn4.onrender.com
+
+## Admin Routes
+Method | Route | Description
+GET | /admin/products | Adnmin product list
+GET | /admin/products/new | Create a new product
+POST | /admin/products/new | Create a new product
+GET | /admin/products/:id | Display details of a specific product
+
+## Features
 
 - **Express-based server** with middleware for logging, JSON parsing, cookies, and static assets
 - **EJS templating** with layout support via `express-ejs-layouts`
@@ -16,10 +27,6 @@ This repository contains a small **Node.js/Express** backend for a product catal
 - Minimal **administration page** stubs prepared for adding/editing products and uploading images using `multer`
 - Organized view partials (hero, spots, product grid, icons, accordion, etc.) for reuse
 - Static assets (CSS, client-side JavaScript, uploads) served from `public/`
-
-> ⚠️ The admin routes are currently a scaffold; implementing full CRUD and authentication would be a natural next step.
-
----
 
 ## 🛠️ Tech Stack
 

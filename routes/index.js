@@ -37,18 +37,6 @@ const db = new Database(dbPath, { verbose: console.log });
 
   ];
 
-
-/**
- * Helper middleware for error handling.
- * Ovo middleware hvata SQL greške i šalje korisniku poruku.
- */
-router.use((err, req, res, next) => {
-  if (err && err.code === 'SQLITE_ERROR') {
-    console.error('SQLITE_ERROR:', err.message);
-    return res.status(500).send('Fel med databas: ' + err.message);
-  }
-  next(err);
-});
 router.get('/products/:id', (req, res) => {
   const template = req.isMobile
     ? 'product-mobile'
@@ -177,6 +165,12 @@ router.post('/admin/products/new', upload.single('image'), (req, res, next) => {
   }
 });
 
-
+router.use((err, req, res, next) => {
+  if (err && err.code === 'SQLITE_ERROR') {
+    console.error('SQLITE_ERROR:', err.message);
+    return res.status(500).send('Fel med databas: ' + err.message);
+  }
+  next(err);
+});
 
 module.exports = router;

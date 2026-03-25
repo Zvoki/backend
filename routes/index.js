@@ -9,13 +9,6 @@ const dbPath = path.join('./data/Populera-produkter.db');
 
 const db = new Database(dbPath, { verbose: console.log });
 
-var app = express();
-// 1) Opt-in za Client Hints – mora biti prvi
-app.use((req, res, next) => {
-  res.set('Accept-CH', 'Viewport-Width');
-  res.set('Vary', 'Viewport-Width');
-  next();
-});
 //var db = new Database(path.join('C:/Workspace/npx/backend-projekt/data/Populera-produkter.db'), { verbose: console.log });
 // Define dynamicSpotsData
   const dynamicSpotsData = [
@@ -49,14 +42,14 @@ app.use((req, res, next) => {
  * Helper middleware for error handling.
  * Ovo middleware hvata SQL greške i šalje korisniku poruku.
  */
-app.use((err, req, res, next) => {
+router.use((err, req, res, next) => {
   if (err && err.code === 'SQLITE_ERROR') {
     console.error('SQLITE_ERROR:', err.message);
     return res.status(500).send('Fel med databas: ' + err.message);
   }
   next(err);
 });
-app.get('/products/:id', (req, res) => {
+router.get('/products/:id', (req, res) => {
   const template = req.isMobile
     ? 'product-mobile'
     : 'product-desktop';

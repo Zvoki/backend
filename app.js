@@ -11,7 +11,13 @@ var adminProductsRouter = require('./routes/admin/products'); // Router för adm
 const expressEjsLayouts = require('express-ejs-layouts'); // Middleware för EJS-layouts
 const { exit } = require('process');                     // Ger möjlighet att avsluta Node-processen
 
-var app = express();                                    // Skapar Express-applikationen
+var app = express();
+
+app.use((req, res, next) => {
+  res.set('Accept-CH', 'Viewport-Width');
+  res.set('Vary', 'Viewport-Width');
+  next();
+});                                   // Skapar Express-applikationen
 
 app.use(expressEjsLayouts);                             // Aktiverar EJS-layouts middleware
 

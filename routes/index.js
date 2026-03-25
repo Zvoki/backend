@@ -4,8 +4,11 @@ var path = require('path');
 var multer = require('multer');
 var upload = multer({ dest: path.join(__dirname, '../public/uploads/') });
 var Database = require('better-sqlite3');
-const dbPath = path.join(__dirname, '..', 'dataPopulera-produkter.db'); { verbose: console.log };
-const db = new Database(dbPath);
+
+const dbPath = path.join('./data/Populera-produkter.db');
+
+const db = new Database(dbPath, { verbose: console.log });
+
 var app = express();
 // 1) Opt-in za Client Hints – mora biti prvi
 app.use((req, res, next) => {

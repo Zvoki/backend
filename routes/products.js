@@ -2,10 +2,13 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var Database = require('better-sqlite3');
-var db = new Database(
-  path.join('C:/Workspace/npx/backend-projekt/data/Populera-produkter.db'),
-  { verbose: console.log }
-);
+
+var path = require('path');
+var dbPath = path.join('./data/Populera-produkter.db');
+
+
+var db = new Database(dbPath, { verbose: console.log });
+
 
 router.get('/', (req, res) => {
   const sql = 'SELECT * FROM products LIMIT 3';

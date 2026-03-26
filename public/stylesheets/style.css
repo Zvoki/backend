@@ -350,6 +350,8 @@ ul li a {
 
 
 .smal {
+  width: 200px;
+  justify-content: flex-start;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -771,7 +773,8 @@ ul li a {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, minmax(10px, auto));
     justify-content: center;
-    width: auto;
+    justify-items: start;
+    width: 200px;
     height: auto;
     padding: 0 20px;
     margin-bottom: 0;
@@ -785,6 +788,7 @@ ul li a {
     width: 50px;
     height: 50px;
   }
+  
 }
 
 @media (min-width: 1024px) {

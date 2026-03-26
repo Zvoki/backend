@@ -8,12 +8,42 @@ This repository contains a small **Node.js/Express** backend for a product catal
 Backend URL:
 https://backend-ryn4.onrender.com
 
+Admin Panel
+https://react-projekt-frontend.onrender.com/admin/products 
+(Admin UI built in React – no login required for demo purposes)
+Backend API
+https://react-projekt-yw6b.onrender.com
+Example API endpoints:
+Popular products:
+https://react-projekt-yw6b.onrender.com/products/popular (react-projekt-yw6b.onrender.com in Bing) 
+All products (admin):
+https://react-projekt-yw6b.onrender.com/admin/products 
+
 ## Admin Routes
+
 Method | Route | Description
 GET | /admin/products | Adnmin product list
 GET | /admin/products/new | Create a new product
 POST | /admin/products/new | Create a new product
 GET | /admin/products/:id | Display details of a specific product
+
+## Image Uploads
+
+Uploaded images are stored in:
+`public/uploads/`
+Accessible via: https://backend-ryn4.onrender.com/uploads/<filename>
+
+Database
+The application uses a SQLite database located at:
+`data/Populera-produkter.db`
+The database contains a `products` table with the following schema:
+CREATE TABLE products (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  description TEXT,
+  price REAL NOT NULL,
+  image_url TEXT
+);
 
 ## Features
 
@@ -27,6 +57,23 @@ GET | /admin/products/:id | Display details of a specific product
 - Minimal **administration page** stubs prepared for adding/editing products and uploading images using `multer`
 - Organized view partials (hero, spots, product grid, icons, accordion, etc.) for reuse
 - Static assets (CSS, client-side JavaScript, uploads) served from `public/`
+
+## Responsive Design
+
+The application is fully responsive and optimized for three key screen sizes:
+< 640px — Mobile devices
+Simplified layout
+Vertical stacking of elements
+Adjusted typography and spacing for small screens
+≥ 640px — Tablets and small laptops
+Two‑column layout where appropriate
+Larger product images
+Improved navigation and spacing
+≥ 1024px — Desktop screens
+Full‑width layout
+Grid‑based product display (e.g., 4×2 products)
+Expanded admin panel layout for better usability
+Responsiveness is implemented using CSS media queries, flexbox, and grid to ensure a consistent and user‑friendly experience across all devices.
 
 ## 🛠️ Tech Stack
 

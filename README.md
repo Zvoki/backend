@@ -5,19 +5,17 @@ This repository contains a small **Node.js/Express** backend for a product catal
 ---
 # Live Demo
 
-Backend URL:
+Backend Project URL:
 https://backend-ryn4.onrender.com
 
 Admin Panel
-https://react-projekt-frontend.onrender.com/admin/products 
 (Admin UI built in React – no login required for demo purposes)
-Backend API
-https://react-projekt-yw6b.onrender.com
-Example API endpoints:
-Popular products:
-https://react-projekt-yw6b.onrender.com/products/popular (react-projekt-yw6b.onrender.com in Bing) 
+
 All products (admin):
-https://react-projekt-yw6b.onrender.com/admin/products 
+https://backend-ryn4.onrender.com/admin/products
+
+Form for new product:
+https://backend-ryn4.onrender.com/admin/products/new
 
 ## Admin Routes
 

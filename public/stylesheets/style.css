@@ -3,9 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .liknande-produkter {
   display: none;
 }
+
 #search-heading {
   display: none;
 }
@@ -221,23 +223,25 @@ ul li a {
   align-self: start;
   font-size: 0.9rem;
 }
+
 .product-information {
   display: flex;
   flex-direction: column;
   width: auto;
-  height: 820px;
+  height: 670px;
   align-items: flex-start;
   /* poravnava sve elemente levo */
   row-gap: 10px;
   margin-left: 10px;
 }
+
 .product-heading {
-  
+
   font-weight: bold;
   text-align: center;
   margin-bottom: 15px;
   padding: 10px;
-  
+
 }
 
 
@@ -350,8 +354,6 @@ ul li a {
 
 
 .smal {
-  width: 200px;
-  justify-content: flex-start;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -438,7 +440,7 @@ ul li a {
   .spots-container {
     display: none;
   }
-  
+
   p {
     font-size: 0.8rem;
     /* Primer: oko 17.6px */
@@ -522,7 +524,7 @@ ul li a {
     padding-left: 10px;
     list-style: none;
   }
-  
+
 
   .first {
     flex-direction: column;
@@ -595,9 +597,9 @@ ul li a {
   .product-information {
     display: flex;
     flex-direction: row;
-    /*align-items: flex-start;*/
-    gap: 5px;
-    padding: 5px;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 2px;
     border: 1px solid #ccc;
     width: 100%;
   }
@@ -606,16 +608,19 @@ ul li a {
   .product-image {
     flex: 0 0 300px;
     /* Fiksirana širina (možeš prilagoditi prema potrebama) */
+    max-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
+    
   }
 
   /* Stilizacija za sliku unutar .produkt-image */
   .product-image img {
     width: 100%;
     height: auto;
+     
   }
 
   /* Kontejner informacija o proizvodu */
@@ -673,13 +678,14 @@ ul li a {
     padding: 0px;
     margin-bottom: 10px;
   }
+
   .liknande-produkter {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-  text-align: center;
-  display: block;
-}
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    display: block;
+  }
 
 
 
@@ -770,38 +776,45 @@ ul li a {
 
   .smaikoner {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 500px 500px;
     grid-template-rows: repeat(2, minmax(10px, auto));
+    align-items: center;
     justify-content: center;
-    justify-items: start;
-    width: 200px;
     height: auto;
+    margin: 0 auto;
     padding: 0 20px;
-    margin-bottom: 0;
+    /*margin-bottom: 0;*/
     box-sizing: border-box;
     text-align: center;
     place-items: center;
   }
+  .smal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px; /* primer */
+}
 
   .smal>img {
     padding: 4%;
     width: 50px;
     height: 50px;
   }
-  
+
 }
 
 @media (min-width: 1024px) {
   .hide-640-1024 {
     display: none !important;
   }
-  .search-page .spots-container {
-  display: none;
-}
 
-.home-page .spots-container {
-  display: grid;
-}
+  .search-page .spots-container {
+    display: none;
+  }
+
+  .home-page .spots-container {
+    display: grid;
+  }
 
 
 
@@ -918,10 +931,12 @@ ul li a {
 
   .container {
     width: 100%;
-    justify-items: center; /* centriranje child elemenata horizontalno */
+    justify-items: center;
+    /* centriranje child elemenata horizontalno */
     margin-left: auto;
     margin-right: auto;
-    align-items: center; /*centriranje child elemenata vertikalno */
+    align-items: center;
+    /*centriranje child elemenata vertikalno */
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, auto);
     gap: 10px;
@@ -963,7 +978,8 @@ ul li a {
     width: 100%;
     /* Potrebno za pozicioniranje unutar figure */
   }
- /* .image-container img.responsive {
+
+  /* .image-container img.responsive {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -982,10 +998,11 @@ ul li a {
   /* Stilovi za .product-display */
   /* Kontejner za ceo prikaz proizvoda */
   .product-information {
-   /*display: flex;
+    /*display: flex;
    flex-direction: row;
    align-items: flex-start;  /* Poravnanje vrhova */
-    gap: 10px;  /* Razmak između slike i informacija */
+    gap: 10px;
+    /* Razmak između slike i informacija */
     /*padding: 10px;*/
     /*margin: 0 auto;*/
     max-width: 1200px;
@@ -1012,7 +1029,7 @@ ul li a {
     flex: 1;
     display: flex;
     flex-direction: column;
-   align-items: flex-start;
+    align-items: flex-start;
   }
 
   /* Naslov proizvoda */
@@ -1087,12 +1104,12 @@ ul li a {
   }
 
   .smaikoner {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, minmax(10px, auto));
+    /*display: grid;*/
+   /* grid-template-columns: repeat(2, 1fr);*/
+    /*grid-template-rows: repeat(2, minmax(10px, auto));*/
     align-items: center;
     justify-content: center;
-    width: auto;
+    /*width: auto;*/
     height: auto;
     padding: 0 20px;
     margin-bottom: 0;

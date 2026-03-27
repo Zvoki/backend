@@ -954,23 +954,26 @@ ul li a {
 
   .spots-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 250px);
     width: 100%;
     height: auto;
-    gap: 10px;
+    gap: 2px;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    padding-right: 10px;
+    padding-right: 2px;
   }
 
   .spots-container img {
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 100px;
     /* object-fit: cover;*/
-    margin: 0 0 0 20px;
+    /*margin: 0 40px 0 40px;*/
     /* gore desno dole levo */
-
+     place-items: center; /* Shorthand for align-items and justify-items */
+  place-content: center; /* Shorthand for align-content and justify-content */
+}
+   
   }
 
   .image-container {
@@ -1150,4 +1153,3 @@ ul li a {
     text-align: center;
   }
 
-}

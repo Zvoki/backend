@@ -2,8 +2,7 @@
 
 This repository contains a small **Node.js/Express** backend for a product catalogue/web shop prototype. It was originally generated with the Express application generator and expanded with a lightweight SQLite database, EJS views and basic file uploads. The goal of the project is to demonstrate an end‑to‑end backend serving dynamic pages, handling database access, and providing a minimal administration interface for managing products.
 
----
-# Live Demo
+## Live Demo
 
 Backend Project URL:
 https://backend-ryn4.onrender.com

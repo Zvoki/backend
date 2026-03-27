@@ -2,6 +2,39 @@
 
 This repository contains a small **Node.js/Express** backend for a product catalogue/web shop prototype. It was originally generated with the Express application generator and expanded with a lightweight SQLite database, EJS views and basic file uploads. The goal of the project is to demonstrate an end‑to‑end backend serving dynamic pages, handling database access, and providing a minimal administration interface for managing products.
 
+## Project structure
+
+backend-projekt/
+│
+├── data/
+│   └── Populera-produkter.db
+│
+├── routes/
+│   ├── index.js
+│   ├── users.js
+│   ├── product.js
+│   └── adminProducts.js
+│
+├── views/
+│   ├── index.ejs
+│   ├── product.ejs
+│   ├── three-products.ejs
+│   ├── administration/
+│   │   ├── products.ejs
+│   │   └── new-product.ejs
+│   └── partials/
+│       ├── accordion.ejs
+│       └── sma-ikoner.ejs
+│
+├── public/
+│   ├── css/
+│   ├── images/
+│   └── uploads/
+│
+├── app.js
+└── package.json
+
+
 ## Live Demo
 
 Backend Project URL:

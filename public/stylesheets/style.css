@@ -345,7 +345,7 @@ ul li a {
 .smaikoner {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
   padding: 10px 0 10px 10px;
@@ -355,7 +355,7 @@ ul li a {
 
 .smal {
   display: flex;
-  align-items: center;
+ /* align-items: center;*/
   gap: 10px;
 }
 
@@ -439,6 +439,16 @@ ul li a {
 
   .spots-container {
     display: none;
+  }
+
+  .smaikoner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
   }
 
   p {
@@ -776,29 +786,39 @@ ul li a {
 
   .smaikoner {
     display: grid;
-    grid-template-columns: 500px 500px;
-    grid-template-rows: repeat(2, minmax(10px, auto));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    justify-items: center;
     align-items: center;
-    justify-content: center;
     height: auto;
     margin: 0 auto;
     padding: 0 20px;
-    /*margin-bottom: 0;*/
     box-sizing: border-box;
     text-align: center;
-    place-items: center;
+    gap: 20px;
   }
   .smal {
     display: flex;
+    width: 100%;
+    max-width: 340px;
+    box-sizing: border-box;
     align-items: center;
+    justify-content: flex-start;
+    justify-self: center;
     gap: 10px;
     min-height: 40px; /* primer */
-}
+    text-align: left;
+    padding: 0 10px;
+  }
 
   .smal>img {
     padding: 4%;
     width: 50px;
     height: 50px;
+  }
+  .smal p {
+    margin: 0;
+    flex: 1;
   }
 
 }
@@ -1104,26 +1124,6 @@ ul li a {
 
   .product-display:hover {
     transform: scale(1.02);
-  }
-
-  .smaikoner {
-    /*display: grid;*/
-   /* grid-template-columns: repeat(2, 1fr);*/
-    /*grid-template-rows: repeat(2, minmax(10px, auto));*/
-    align-items: center;
-    justify-content: center;
-    /*width: auto;*/
-    height: auto;
-    padding: 0 20px;
-    margin-bottom: 0;
-    box-sizing: border-box;
-
-  }
-
-  .smal>img {
-    padding: 4%;
-    width: 50px;
-    height: 50px;
   }
 
   #footer {

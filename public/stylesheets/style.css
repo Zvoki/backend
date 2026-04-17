@@ -233,7 +233,9 @@ ul li a {
   /* poravnava sve elemente levo */
   row-gap: 10px;
   margin-left: 10px;
+  
 }
+
 
 .product-heading {
 
@@ -350,6 +352,7 @@ ul li a {
   gap: 20px;
   padding: 10px 0 10px 10px;
   /*top, right, bottom i left*/
+  margin-top: 270px;
 }
 
 
